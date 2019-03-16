@@ -4,6 +4,11 @@
     font-family: NotoSans-Regular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+.page-layout {
+    padding: 100px 20%;
+    justify-content : center;
+}
+
 .no-margin {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -64,4 +69,11 @@
 .popup > span {
     margin-left: 5px;
     font-size: 15px;
+}
+
+@media screen and (max-width: 768) {
+
+    .page-layout {
+        padding: 100px 20px;
+    }
 }

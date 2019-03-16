@@ -1,0 +1,55 @@
+﻿
+
+.my-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.my-row-left {
+    flex-grow: 1;
+}
+
+.my-row-right{
+    flex-grow: 2;
+}
+
+.big-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    background-size: contain;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-image: url("../images/default_user.png");
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.primarycolor-text {
+    cursor: pointer;
+    color: #0094ff;
+    font-size: 18px;
+}
+
+.profile-info{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.rate {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.rate > input {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .my-row-right{
+        text-align: center;
+    }
+}

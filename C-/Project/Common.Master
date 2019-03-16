@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href ="images/page.jpg" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/page.jpg" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/error.css" />
+    <link rel="stylesheet" href="css/profile.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -37,23 +38,23 @@
                         <p>Watched product</p>
                     </a>
                     <div class="dropdown navbar-right-item">
-                        <a runat ="server"
+                        <a runat="server"
                             class="navLink navbar-right-item"
-                            id="dropdownMenuButton" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
-                            aria-expanded="false" 
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                             href="#">
-                            <div id="avatar"  runat ="server" class="avatar">
+                            <div id="avatar" runat="server" class="avatar">
                             </div>
                             <div>
-                                <p id ="username" runat ="server"></p>
+                                <p id="username" runat="server"></p>
                             </div>
                         </a>
-                        <div  runat ="server" id ="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">View Profile</a>
+                        <div runat="server" id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a id="toProfile" runat="server" class="dropdown-item" href="#">View Profile</a>
                             <a class="dropdown-item" href="#">Account Setting</a>
-                            <asp:Button CssClass ="dropdown-item" OnClick ="logout" ID="Button1" runat="server" Text="Logout" />
+                            <asp:Button CssClass="dropdown-item" OnClick="logout" ID="Button1" runat="server" Text="Logout" />
                         </div>
                     </div>
                     <a class="navLink navbar-right-item cart" href="#">
@@ -67,4 +68,9 @@
         </asp:ContentPlaceHolder>
     </form>
 </body>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </html>

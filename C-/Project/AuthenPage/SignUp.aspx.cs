@@ -29,11 +29,13 @@ namespace Project
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "disableButton", "$('.loginBtn').attr('disabled', '');", true);
                 connection = new SqlConnection(connStr);
-                String query = "INSERT INTO [users] ([username] , [password]) VALUES (@username,  @password)";
+                String query = "INSERT INTO [users] ([username] , [password] , [joined]) VALUES (@username,  @password , @joined)";
                 SqlCommand command = new SqlCommand(query, connection);
 
+                DateTime today = DateTime.Today;
                 command.Parameters.Add(new SqlParameter("@username", usernameTxt.Text));
                 command.Parameters.Add(new SqlParameter("@password", passwordTxt.Text));
+                command.Parameters.Add(new SqlParameter("@joined", today.ToString("yyyy/MM/dd")));
 
                 connection.Open();
                 command.ExecuteNonQuery();

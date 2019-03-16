@@ -10,6 +10,8 @@ namespace Project
 {
     public partial class Common : System.Web.UI.MasterPage
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             setSession();
@@ -38,6 +40,8 @@ namespace Project
             {
                 username.InnerHtml = user.Username;
                 string url = "/user/avatar/" + user.ID;
+                //href link to profile at navbar
+                toProfile.Attributes["href"] = "/user/" + user.ID;
                 avatar.Attributes["style"] = "background-image: url(" + url + ")";
             }
             else
