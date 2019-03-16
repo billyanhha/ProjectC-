@@ -1,0 +1,67 @@
+﻿html, body, form {
+    padding: 0;
+    margin: 0;
+    font-family: NotoSans-Regular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.no-margin {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.popup {
+    text-align: center;
+    max-width: 350px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #000;
+    position: fixed;
+    top: -50px;
+    left: 50%;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+}
+
+.appear {
+    transition: all 0.3s ease-in-out;
+    animation-name: example;
+    animation-duration: 3s;
+}
+
+/* Standard syntax */
+@keyframes example {
+    0% {
+        top: 0px;
+    }
+
+    5% {
+        top: 50px;
+    }
+
+    25% {
+        top: 50px;
+    }
+
+    50% {
+        top: 50px;
+    }
+
+    75% {
+        top: 50px;
+    }
+
+    100% {
+        top: 50px;
+    }
+}
+
+.popup > .issue {
+    color: #ff0000;
+}
+
+.popup > span {
+    margin-left: 5px;
+    font-size: 15px;
+}

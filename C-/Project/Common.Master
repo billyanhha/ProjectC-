@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Common.master.cs" Inherits="Project.Common" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href ="images/page.jpg" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/error.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <nav class="navbar navbar-expand-md justify-content-center ">
+                <!-- Brand -->
+                <a class="navLink store-name" href="/home">Chocu</a>
+                <div class="nav-input">
+                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <ion-icon name="list" style="color: #189eff"></ion-icon>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar" style="justify-content: space-between">
+                    <a class="navLink navbar-right-item" href="#">
+                        <ion-icon class="icon" name="notifications-outline"></ion-icon>
+                        <p>Notification</p>
+                    </a>
+                    <a class="navLink navbar-right-item " href="#">
+                        <ion-icon class="icon" name="basket"></ion-icon>
+                        <p>Watched product</p>
+                    </a>
+                    <div class="dropdown navbar-right-item">
+                        <a runat ="server"
+                            class="navLink navbar-right-item"
+                            id="dropdownMenuButton" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false" 
+                            href="#">
+                            <div id="avatar"  runat ="server" class="avatar">
+                            </div>
+                            <div>
+                                <p id ="username" runat ="server"></p>
+                            </div>
+                        </a>
+                        <div  runat ="server" id ="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">View Profile</a>
+                            <a class="dropdown-item" href="#">Account Setting</a>
+                            <asp:Button CssClass ="dropdown-item" OnClick ="logout" ID="Button1" runat="server" Text="Logout" />
+                        </div>
+                    </div>
+                    <a class="navLink navbar-right-item cart" href="#">
+                        <ion-icon class="icon" name="cart"></ion-icon>
+                        <p>Your cart</p>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <asp:ContentPlaceHolder ID="Content" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

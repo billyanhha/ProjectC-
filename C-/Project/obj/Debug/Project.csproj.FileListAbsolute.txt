@@ -1,0 +1,8 @@
+D:\FPT\Spring2019\C#\Practice\Project\bin\Project.dll.config
+D:\FPT\Spring2019\C#\Practice\Project\bin\Project.dll
+D:\FPT\Spring2019\C#\Practice\Project\bin\Project.pdb
+D:\FPT\Spring2019\C#\Practice\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+D:\FPT\Spring2019\C#\Practice\Project\obj\Debug\Project.dll
+D:\FPT\Spring2019\C#\Practice\Project\obj\Debug\Project.pdb
+D:\FPT\Spring2019\C#\Practice\Project\bin\ChocuModel.dll
+D:\FPT\Spring2019\C#\Practice\Project\bin\ChocuModel.pdb
