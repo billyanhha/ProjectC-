@@ -19,7 +19,8 @@
     width: 150px;
     height: 150px;
     border-radius: 150px;
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
     background-color: #fff;
     background-repeat: no-repeat;
     background-image: url("../images/default_user.png");
@@ -30,7 +31,7 @@
 .primarycolor-text {
     cursor: pointer;
     color: #0094ff;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .profile-info{
@@ -46,6 +47,10 @@
 
 .rate > input {
     margin-right: 5px;
+}
+
+.profile-info-item-detail {
+    font-size: 15px;
 }
 
 @media screen and (max-width: 768px) {

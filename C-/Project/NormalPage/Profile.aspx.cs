@@ -12,6 +12,15 @@ namespace Project.NormalPage
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Profile";
+            getUserAvatar();
+        }
+
+        private void getUserAvatar()
+        {
+            string id = Page.RouteData.Values["id"].ToString();
+            string url = "/user/avatar/" + id;
+            //user avatar
+            bgAvatar.Attributes["style"] = "background-image: url(" + url + ")";
         }
     }
 }

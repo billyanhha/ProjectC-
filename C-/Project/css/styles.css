@@ -14,6 +14,13 @@
     margin-right: 0 !important;
 }
 
+.small-description{
+    font-size: 13px;
+    color: #808080;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
 .popup {
     text-align: center;
     max-width: 350px;

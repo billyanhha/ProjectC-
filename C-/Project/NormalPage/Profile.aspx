@@ -15,19 +15,20 @@
                 <br />
                 <div class="profile-info">
                     <div class="profile-info-item">
-                        <p>Join at : <b class="primarycolor-text">2019-16-3</b></p>
+                        <p class ="profile-info-item-detail">Join at : <b class="primarycolor-text">2019-16-3</b></p>
                     </div>
                     <div class="profile-info-item">
-                        <p>Rate : <b class="primarycolor-text" data-toggle="tooltip" title="By : ">4 / 5</b></p>
+                        <p class ="profile-info-item-detail">Rate : <b class="primarycolor-text" data-toggle="tooltip" title="By : ">4 / 5</b></p>
                     </div>
                     <div class="profile-info-item">
-                        <p>Product : <b class="primarycolor-text">213</b></p>
+                        <p class ="profile-info-item-detail">Product : <b class="primarycolor-text">213</b></p>
                     </div>
                 </div>
                 <div class ="rate">
                     <input class ="form-control" type ="number" max ="5" min ="1" />
                     <button class ="btn btn-primary">Rate</button>
                 </div>
+                <p class="small-description">* Rate user score from 1 to 5</p>
             </div>
         </div>
     </div>
