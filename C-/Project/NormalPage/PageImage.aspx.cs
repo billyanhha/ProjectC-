@@ -19,8 +19,23 @@ namespace Project.NormalPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(Page.RouteData.Values["id"].ToString());
-            renderImage(id);
+            if (Page.RouteData.Values["id"] == null)
+            {
+                Response.Redirect("/error");
+            }
+            else
+            {
+                int id;
+                bool tryParse = int.TryParse(Page.RouteData.Values["id"].ToString(), out id);
+                if (tryParse && id > 0)
+                {
+                    renderImage(id);
+                }
+                else
+                {
+
+                }
+            }
         }
 
         private void renderImage(int id)
@@ -56,7 +71,6 @@ namespace Project.NormalPage
                         fs.Read(data, 0, data.Length);
                     }
 
-                    // Delete the temporary file
                     string ext = Path.GetExtension(fileInfo.Name);
                     Response.ContentType = (ext);
                     Response.BinaryWrite(data);

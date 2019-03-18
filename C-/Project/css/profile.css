@@ -11,7 +11,7 @@
     flex-grow: 1;
 }
 
-.my-row-right{
+.my-row-right {
     flex-grow: 2;
 }
 
@@ -21,11 +21,42 @@
     border-radius: 150px;
     background-size: cover;
     background-position: center center;
+    border: 0.5px solid #efefef;
     background-color: #fff;
     background-repeat: no-repeat;
     background-image: url("../images/default_user.png");
     margin: 0 auto;
     margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.changeAvatar {
+    cursor: pointer;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+}
+
+.big-avatar:hover .changeAvatar {
+    visibility: visible;
+    background-color: rgba(0, 0, 0,.5);
+}
+
+.uploadText {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    margin: auto auto;
 }
 
 .primarycolor-text {
@@ -34,7 +65,7 @@
     font-size: 15px;
 }
 
-.profile-info{
+.profile-info {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -45,16 +76,23 @@
     flex-flow: row nowrap;
 }
 
-.rate > input {
-    margin-right: 5px;
-}
+    .rate > input {
+        margin-right: 5px;
+    }
 
 .profile-info-item-detail {
     font-size: 15px;
 }
 
+
+.preImage {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
 @media screen and (max-width: 768px) {
-    .my-row-right{
+    .my-row-right {
         text-align: center;
     }
 }

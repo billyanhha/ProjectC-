@@ -6,7 +6,7 @@
             <img alt="404" src="../images/tải xuống.png" />
         </div>
         <div class="col-12 col-md-3">
-            <h1>Oops</h1>
+            <h1 runat="server" id ="errMsg">Not available</h1>
             <%--<h5>We are trying to solve this problem</h5>--%>
         </div>
     </div>

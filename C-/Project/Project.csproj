@@ -72,6 +72,7 @@
     <Content Include="AuthenPage\SignUp.aspx" />
     <Content Include="images\tải xuống.png" />
     <Content Include="js\login.js" />
+    <Content Include="js\UploadImage.js" />
     <Content Include="NormalPage\ErrorPage.aspx" />
     <Content Include="NormalPage\Home.aspx" />
     <Content Include="NormalPage\PageImage.aspx" />

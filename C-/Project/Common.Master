@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/page.jpg" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/error.css" />
@@ -14,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+    <script type="text/javascript" src="../js/UploadImage.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -26,15 +27,15 @@
                     <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <ion-icon name="list" style="color: #189eff"></ion-icon>
+                    <i class="fas fa-list-ul list" style="color: #189eff"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar" style="justify-content: space-between">
                     <a class="navLink navbar-right-item" href="#">
-                        <ion-icon class="icon" name="notifications-outline"></ion-icon>
+                        <i class="fas fa-bell icon"></i>
                         <p>Notification</p>
                     </a>
                     <a class="navLink navbar-right-item " href="#">
-                        <ion-icon class="icon" name="basket"></ion-icon>
+                        <i class="fas fa-shopping-basket icon"></i>
                         <p>Watched product</p>
                     </a>
                     <div class="dropdown navbar-right-item">
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                     <a class="navLink navbar-right-item cart" href="#">
-                        <ion-icon class="icon" name="cart"></ion-icon>
+                        <i class="fas fa-cart-plus icon"></i>
                         <p>Your cart</p>
                     </a>
                 </div>
@@ -68,9 +69,4 @@
         </asp:ContentPlaceHolder>
     </form>
 </body>
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 </html>

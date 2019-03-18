@@ -2,3 +2,7 @@ D:\FPT\Spring2019\C#\Practice\ChocuModel\bin\Debug\ChocuModel.dll
 D:\FPT\Spring2019\C#\Practice\ChocuModel\bin\Debug\ChocuModel.pdb
 D:\FPT\Spring2019\C#\Practice\ChocuModel\obj\Debug\ChocuModel.dll
 D:\FPT\Spring2019\C#\Practice\ChocuModel\obj\Debug\ChocuModel.pdb
+D:\ProjectC#\C-\ChocuModel\bin\Debug\ChocuModel.dll
+D:\ProjectC#\C-\ChocuModel\bin\Debug\ChocuModel.pdb
+D:\ProjectC#\C-\ChocuModel\obj\Debug\ChocuModel.dll
+D:\ProjectC#\C-\ChocuModel\obj\Debug\ChocuModel.pdb

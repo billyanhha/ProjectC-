@@ -12,6 +12,10 @@ namespace Project.NormalPage
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Error";
+            if (!String.IsNullOrEmpty(Request.QueryString["message"]))
+            {
+                errMsg.InnerHtml = Request.QueryString["message"];
+            }
         }
     }
 }
