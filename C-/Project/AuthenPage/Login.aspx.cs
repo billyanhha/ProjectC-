@@ -39,7 +39,7 @@ namespace Project
             SqlConnection connection = new SqlConnection(connStr);
             try
             {
-                String query = "Select username , id from users where username = @username and password = @password";
+                String query = "Select username , id, active from users where username = @username and password = @password";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.Add(new SqlParameter("@username" , usernameTxt.Text));
                 cmd.Parameters.Add(new SqlParameter("@password", passwordTxt.Text));
@@ -60,6 +60,11 @@ namespace Project
                         user.Username = dr["username"].ToString();
                         Session["authenUser"] = user;
 
+                        if (dr["active"].ToString() == "False")
+                        {
+                            backtoActive(user.ID);
+                        }
+
                         //set cookie
                         setCookie(user.ID , user.Username);
                         Response.Redirect("/home");
@@ -68,11 +73,36 @@ namespace Project
             }
             catch (Exception)
             {
-                Response.Redirect("/error");
+                throw;
             }
             finally
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "removeAttr", "$('.loginBtn').removeAttr('disabled');", true);
+                connection.Close();
+            }
+        }
+
+        private void backtoActive(int id)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(connStr);
+
+                String query = "UPDATE [dbo].[users] SET " + " active = 1 " + "WHERE id = " + id;
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
                 connection.Close();
             }
         }

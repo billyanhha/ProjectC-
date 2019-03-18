@@ -44,10 +44,20 @@
             <div class="my-row-right">
                 <h3>
                     <span runat="server" id="usernameLabel">Username</span>
-                    <i runat="server" id="settingIcon" class="fas fa-cog primarycolor-text" data-toggle="tooltip" title="Setting"></i>
+                    <a
+                        href="/user/setting"
+                        data-toggle="tooltip"
+                        title="Setting">
+                        <i runat="server"
+                            id="settingIcon"
+                            class="fas fa-cog primarycolor-text"></i>
+                    </a>
                 </h3>
                 <br />
                 <h6 runat="server" id="fullnameLabel"></h6>
+                <br />
+                <span><i class="fas fa-map-marker-alt location"></i><b class="primarycolor-text date" runat="server" id="addressLabel"></b></span>
+                <br />
                 <br />
                 <div class="profile-info">
                     <div class="profile-info-item">
@@ -59,11 +69,17 @@
                     <div class="profile-info-item">
                         <p class="profile-info-item-detail">Product : <b runat="server" id="productLabel" class="primarycolor-text"></b></p>
                     </div>
+                    <br />
+                    <div class="profile-info-item">
+                        <p class="profile-info-item-detail">Contact : <b runat="server" id="phoneNumber" class="primarycolor-text"></b></p>
+                    </div>
                 </div>
+                <br />
+                <p class="profile-info-item-detail">*** <b runat="server" id="description"></b></p>
                 <div runat="server" id="rateDiv">
                     <div class="rate">
-                        <input class="form-control" type="number" max="5" min="1" />
-                        <asp:Button ID="rateBtn" runat="server" CssClass="btn btn-primary" Text="Rate" />
+                        <asp:TextBox runat="server" CssClass="form-control" ID ="score" type="number" max="5" min="1" />
+                        <asp:Button ID="rateBtn" OnClick ="rateBtn_Click" runat="server" CssClass="btn btn-primary" Text="Rate" />
                     </div>
                     <p class="small-description">* Rate user score from 1 to 5</p>
                 </div>

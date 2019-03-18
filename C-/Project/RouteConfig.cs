@@ -15,8 +15,9 @@ namespace Project
             //normal page
             routes.MapPageRoute("Default", "", "~/NormalPage/Home.aspx" , true);
             routes.MapPageRoute("Home", "home", "~/NormalPage/Home.aspx" , true);
-            routes.MapPageRoute("Profile", "user/{id}", "~/NormalPage/Profile.aspx", true);
+            routes.MapPageRoute("Profile", "user/detail/{id}", "~/NormalPage/Profile.aspx", true);
             routes.MapPageRoute("avatar", "user/avatar/{id}", "~/NormalPage/PageImage.aspx", true);
+            routes.MapPageRoute("Setting", "user/setting", "~/NormalPage/Setting.aspx", true);
 
             //Authen page
             routes.MapPageRoute("Login", "login", "~/AuthenPage/Login.aspx");

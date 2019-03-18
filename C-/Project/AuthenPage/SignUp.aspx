@@ -47,10 +47,10 @@
                         <asp:RegularExpressionValidator
                             ID="RegularExpressionValidator2"
                             ControlToValidate="passwordTxt"
-                            ValidationExpression="^[a-zA-Z0-9]{7,}$"
+                            ValidationExpression="^[a-zA-Z0-9]{6,}$"
                             runat="server"
                             CssClass="validate"
-                            ErrorMessage="Password must contain mother than 7 characters">
+                            ErrorMessage="Password must contain mother than 5 characters">
                         </asp:RegularExpressionValidator>
                         <br />
                         <asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Medium" Text="Re-enter password"></asp:Label>

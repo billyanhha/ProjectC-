@@ -76,6 +76,15 @@ namespace Project.NormalPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl fullnameLabel;
         
         /// <summary>
+        /// addressLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl addressLabel;
+        
+        /// <summary>
         /// joinedDateLabel control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,24 @@ namespace Project.NormalPage {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl productLabel;
         
         /// <summary>
+        /// phoneNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl phoneNumber;
+        
+        /// <summary>
+        /// description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl description;
+        
+        /// <summary>
         /// rateDiv control.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,15 @@ namespace Project.NormalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl rateDiv;
+        
+        /// <summary>
+        /// score control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox score;
         
         /// <summary>
         /// rateBtn control.

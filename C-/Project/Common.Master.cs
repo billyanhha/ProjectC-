@@ -41,7 +41,7 @@ namespace Project
                 username.InnerHtml = user.Username;
                 string url = "/user/avatar/" + user.ID;
                 //href link to profile at navbar
-                toProfile.Attributes["href"] = "/user/" + user.ID;
+                toProfile.Attributes["href"] = "/user/detail/" + user.ID;
                 avatar.Attributes["style"] = "background-image: url(" + url + ")";
             }
             else

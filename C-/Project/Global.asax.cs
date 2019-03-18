@@ -40,7 +40,6 @@ namespace Project
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Response.Redirect("/error");
         }
 
         protected void Session_End(object sender, EventArgs e)

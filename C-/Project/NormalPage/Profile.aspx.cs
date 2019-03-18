@@ -13,6 +13,8 @@ namespace Project.NormalPage
 {
     public partial class Profile : System.Web.UI.Page
     {
+        public int rateScore { get; set; }
+        public int rateNumber { get; set; }
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
@@ -33,8 +35,11 @@ namespace Project.NormalPage
                 {
                     id = fixId;
                     Page.Title = "Profile";
-                    getUserData();
-                    validateAuthorise();
+                    if (!IsPostBack)
+                    {
+                        getUserData();
+                        validateAuthorise();
+                    }
                 }
                 else
                 {
@@ -70,7 +75,7 @@ namespace Project.NormalPage
             try
             {
                 connection = new SqlConnection(connStr);
-                String query = "Select username, fullname, address, description,joined, rate, rate_numbers from users where id = @id and active = 1";
+                String query = "Select username, fullname, address, description,joined, rate, rate_numbers, phoneNumber from users where id = @id and active = 1";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@id", id));
@@ -85,23 +90,36 @@ namespace Project.NormalPage
                     getUserTotalProduct();
                     while (reader.Read())
                     {
+
+                        //get rate data
+
+                        rateScore = int.Parse(reader["rate"].ToString());
+                        rateNumber = int.Parse(reader["rate_numbers"].ToString());
+
+                        // other data
+
                         string username = reader["username"].ToString();
                         usernameLabel.InnerHtml = username;
 
-                        string fullname = (!string.IsNullOrEmpty(reader["fullname"].ToString())) ? 
+                        string fullname = (!string.IsNullOrEmpty(reader["fullname"].ToString())) ?
                             reader["fullname"].ToString() : ("*This user didn't provide fullname yet");
                         fullnameLabel.InnerHtml = fullname;
+
                         joinedDateLabel.InnerHtml = Convert.ToDateTime(reader["joined"].ToString()).ToString("yyyy-MM-dd");
-                        if (!string.IsNullOrEmpty(reader["rate_numbers"].ToString()))
-                        {
-                            int rateScore = int.Parse(reader["rate"].ToString());
-                            int rateNum = int.Parse(reader["rate_numbers"].ToString());
-                            ratedLabel.InnerHtml = (rateNum != 0) ? (rateScore / rateNum + "rateNum") : ("N/A");
-                        }
-                        else
-                        {
-                            ratedLabel.InnerHtml = "N/A";
-                        }
+
+                        addressLabel.InnerHtml = (!string.IsNullOrEmpty(reader["address"].ToString())) ?
+                            reader["address"].ToString() : ("No location provide");
+
+                        description.InnerHtml = (!string.IsNullOrEmpty(reader["description"].ToString())) ?
+                            reader["description"].ToString() : ("Hii");
+
+                        phoneNumber.InnerHtml = (!string.IsNullOrEmpty(reader["phoneNumber"].ToString())) ?
+                            reader["phoneNumber"].ToString() : ("*No phonenumber provide");
+
+                        // score 
+                        ratedLabel.InnerHtml = (rateNumber != 0) ? (rateScore / rateNumber + " / 5") : ("N/A");
+                        string ss = (rateNumber != 0) ? (rateNumber + "") : ("N/A");
+                        ratedLabel.Attributes["title"] += ss;
                     }
                 }
                 else
@@ -201,7 +219,33 @@ namespace Project.NormalPage
                     connection.Close();
                 }
 
+            }
+        }
 
+        protected void rateBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(connStr);
+                String query = "UPDATE [dbo].[users] SET [rate] = @rate ,  [rate_numbers] = @rate_number WHERE id = @id";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                command.Parameters.Add(new SqlParameter("@id", id));
+                //get image data
+                command.Parameters.Add(new SqlParameter("@rate_number", rateNumber + 1));
+                command.Parameters.Add(new SqlParameter("@rate", rateScore + int.Parse(score.Text)));
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

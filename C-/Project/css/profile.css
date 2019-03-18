@@ -95,4 +95,8 @@
     .my-row-right {
         text-align: center;
     }
+
+    .profile-info {
+        flex-direction: column;
+    }
 }

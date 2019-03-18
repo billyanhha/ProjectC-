@@ -1,0 +1,32 @@
+﻿
+.menu {
+    width: 100%;
+    overflow: auto;
+    padding: 5px 0;
+}
+
+.menu a {
+    margin: 10px;
+    line-height: 30px;
+}
+
+tr {
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.menuSetting {
+    width: 100%;
+}
+
+.setting-item{
+    border: 1px solid #F2F3F5;
+    border-radius: 5px;
+    padding: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .setting-item {
+        padding: 10px;
+    }
+}

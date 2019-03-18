@@ -29,7 +29,10 @@ namespace Project.NormalPage
                 bool tryParse = int.TryParse(Page.RouteData.Values["id"].ToString(), out id);
                 if (tryParse && id > 0)
                 {
-                    renderImage(id);
+                    if (!IsPostBack)
+                    {
+                        renderImage(id);
+                    }
                 }
                 else
                 {
