@@ -14,24 +14,9 @@ namespace Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            setSession();
             getUser();
         }
 
-        public void setSession()
-        {
-            HttpCookie uid = Request.Cookies["id"];
-            HttpCookie un = Request.Cookies["username"];
-            if (Session["authenUser"] == null && uid != null && un != null)
-            {
-                string id = uid.Value;
-                string us = un.Value;
-                User user = new User();
-                user.ID = int.Parse(id);
-                user.Username = us;
-                Session["authenUser"] = user;
-            } 
-        }
 
         private void getUser()
         {
@@ -51,6 +36,10 @@ namespace Project
                 dropdownMenuButton.Attributes["href"] = "/login";
             }
         }
+
+    
+
+
 
 
 

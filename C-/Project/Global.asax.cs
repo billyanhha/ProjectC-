@@ -18,6 +18,8 @@ namespace Project
         }
 
 
+
+
         protected void PageRedirect()
         {
         }
@@ -25,7 +27,17 @@ namespace Project
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            HttpCookie uid = Request.Cookies["id"];
+            HttpCookie un = Request.Cookies["username"];
+            if (Session["authenUser"] == null && uid != null && un != null)
+            {
+                string id = uid.Value;
+                string us = un.Value;
+                User user = new User();
+                user.ID = int.Parse(id);
+                user.Username = us;
+                Session["authenUser"] = user;
+            }
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

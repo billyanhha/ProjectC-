@@ -9,6 +9,7 @@ $(document).ready(() => {
 const loadingResources = () => {
     uploadImage();
     editProfile();
+    multiImage();
 };
 
 const editProfile = () => {
@@ -70,6 +71,40 @@ const uploadImage = () => {
 
     $(".uploadAvatar").change(function () {
         readURL(this);
+    });
+};
+
+const multiImage = () => {
+    //    load data
+    function readURL(input , callback) {
+        if (input.files && input.files[0]) {
+            let index = 0;
+            let arr = [...input.files];
+
+            for(let item of arr) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    $(".preview-image").append("<div class=\"preview-image-item\ " + ++index + "\"></div>");
+                    $(`.${index}`).attr('style', `background-image: url('${e.target.result}');`);
+                };
+                reader.readAsDataURL(item);
+
+            }
+
+            callback();
+
+        } else {
+            $(".preview-image").empty();
+        }
+    }
+
+    $(".multiFileUpload").change(function () {
+        readURL(this , ()=>            $(".preview-image").append("<i class=\"fas fa-minus-circle  preview-image-clear\"></i>"));
+        $(".preview-image-clear").on('click', () => {
+            console.log("sss");
+            $(".multiFileUpload").replaceWith($(".multiFileUpload").val('').clone(true));
+            $(".preview-image").empty();
+        });
     });
 };
 

@@ -76,8 +76,10 @@
     <Content Include="images\tải xuống.png" />
     <Content Include="js\login.js" />
     <Content Include="js\index.js" />
+    <Content Include="NormalPage\AddProduct.aspx" />
     <Content Include="NormalPage\ErrorPage.aspx" />
     <Content Include="NormalPage\Home.aspx" />
+    <Content Include="NormalPage\Image.aspx" />
     <Content Include="NormalPage\PageImage.aspx" />
     <Content Include="NormalPage\Profile.aspx" />
     <Content Include="NormalPage\Setting.aspx" />
@@ -106,6 +108,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="NormalPage\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NormalPage\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -119,6 +128,13 @@
     </Compile>
     <Compile Include="NormalPage\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\Image.aspx.cs">
+      <DependentUpon>Image.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\Image.aspx.designer.cs">
+      <DependentUpon>Image.aspx</DependentUpon>
     </Compile>
     <Compile Include="NormalPage\PageImage.aspx.cs">
       <DependentUpon>PageImage.aspx</DependentUpon>

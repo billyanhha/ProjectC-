@@ -55,6 +55,7 @@
                         <div runat="server" id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a id="toProfile" runat="server" class="dropdown-item" href="#">View Profile</a>
                             <a class="dropdown-item" href="/user/setting">Account Setting</a>
+                            <a class="dropdown-item" href="/product/add">Add product</a>
                             <asp:Button UseSubmitBehavior="false" CausesValidation="false" CssClass="dropdown-item" OnClick="logout" ID="Button1" runat="server" Text="Logout" />
                         </div>
                     </div>
