@@ -20,6 +20,7 @@ namespace Project
             routes.MapPageRoute("Image", "image", "~/NormalPage/Image.aspx", true);
             routes.MapPageRoute("Setting", "user/setting", "~/NormalPage/Setting.aspx", true);
             routes.MapPageRoute("AddProduct", "product/add", "~/NormalPage/AddProduct.aspx", true);
+            routes.MapPageRoute("Product Detail", "product/detail/{id}", "~/NormalPage/ProductDetail.aspx", true);
 
             //Authen page
             routes.MapPageRoute("Login", "login", "~/AuthenPage/Login.aspx");

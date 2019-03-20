@@ -1,0 +1,77 @@
+﻿
+
+.product-detail {
+    padding: 5px 10px;
+}
+
+
+.carousel .carousel-innter_image {
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-color: #fafafa;
+}
+
+.carousel-common-icon {
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.detail-right {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+}
+
+    .detail-right > * {
+        margin-bottom: 20px;
+    }
+
+.product-description {
+    font-size: 16px;
+    word-wrap: break-word;
+    border-radius: 5px;
+}
+
+.product-ship {
+    font-size: 16px;
+    word-wrap: break-word;
+    border-radius: 5px;
+}
+
+.status {
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+.sold {
+    background-color: red;
+    font-weight: bold;
+}
+
+.selling {
+    background-color: #20c602;
+    font-weight: bold;
+}
+
+.detail-right-header {
+    display: flex;
+    align-items: center;
+}
+
+    .detail-right-header > p {
+        margin: 0;
+        padding: 0 !important;
+        margin-right: 10px;
+    }
+
+    .detail-right-header i {
+        color: #189eff;
+        cursor: pointer;
+    }
+
+.orderDiv , .editIcon {
+    display: none;
+}

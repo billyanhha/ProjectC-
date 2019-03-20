@@ -13,8 +13,8 @@ namespace Project.NormalPage
 {
     public partial class Profile : System.Web.UI.Page
     {
-        public int rateScore { get; set; }
-        public int rateNumber { get; set; }
+        private int rateScore;
+        private int rateNumber;
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
@@ -35,11 +35,9 @@ namespace Project.NormalPage
                 {
                     id = fixId;
                     Page.Title = "Profile";
-                    if (!IsPostBack)
-                    {
-                        getUserData();
-                        validateAuthorise();
-                    }
+
+                    getUserData();
+                    validateAuthorise();
                 }
                 else
                 {
@@ -96,6 +94,11 @@ namespace Project.NormalPage
                         rateScore = int.Parse(reader["rate"].ToString());
                         rateNumber = int.Parse(reader["rate_numbers"].ToString());
 
+                        // score 
+                        ratedLabel.InnerHtml = (rateNumber != 0) ? (rateScore / rateNumber + " / 5") : ("N/A");
+                        string ss = (rateNumber != 0) ? (rateNumber + "") : (rateNumber + "");
+                        ratedLabel.Attributes["title"] = "By : " + ss;
+
                         // other data
 
                         string username = reader["username"].ToString();
@@ -116,10 +119,6 @@ namespace Project.NormalPage
                         phoneNumber.InnerHtml = (!string.IsNullOrEmpty(reader["phoneNumber"].ToString())) ?
                             reader["phoneNumber"].ToString() : ("*No phonenumber provide");
 
-                        // score 
-                        ratedLabel.InnerHtml = (rateNumber != 0) ? (rateScore / rateNumber + " / 5") : ("N/A");
-                        string ss = (rateNumber != 0) ? (rateNumber + "") : ("N/A");
-                        ratedLabel.Attributes["title"] += ss;
                     }
                 }
                 else
@@ -233,11 +232,10 @@ namespace Project.NormalPage
                 connection.Open();
 
                 command.Parameters.Add(new SqlParameter("@id", id));
-                //get image data
                 command.Parameters.Add(new SqlParameter("@rate_number", rateNumber + 1));
                 command.Parameters.Add(new SqlParameter("@rate", rateScore + int.Parse(score.Text)));
-
                 command.ExecuteNonQuery();
+                score.Text = "";
             }
             catch (Exception ex)
             {

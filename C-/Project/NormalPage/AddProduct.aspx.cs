@@ -140,7 +140,7 @@ namespace Project.NormalPage
                     {
                         index++;
 
-                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id]) VALUES (@data" + index+ ", @type"+index+ " , @id" + index + " ) \n";
+                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id] , [index]) VALUES (@data" + index+ ", @type"+index+ " , @id" + index + " , @index" + index +  " ) \n";
 
                     }
 
@@ -163,6 +163,7 @@ namespace Project.NormalPage
                         command.Parameters.Add(new SqlParameter("@data"+index1 , data));
                         command.Parameters.Add(new SqlParameter("@type" + index1, mimeType));
                         command.Parameters.Add(new SqlParameter("@id" + index1, insertId));
+                        command.Parameters.Add(new SqlParameter("@index" + index1, index1));
 
                     }
 

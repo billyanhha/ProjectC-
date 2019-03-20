@@ -76,8 +76,9 @@ input {
 }
 
 .icon {
-    font-size: 23px;
-    margin-right: 3px;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .avatar {

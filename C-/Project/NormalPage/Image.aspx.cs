@@ -38,7 +38,7 @@ namespace Project.NormalPage
             try
             {
                 SqlConnection connection = new SqlConnection(connStr);
-                String query = "Select [image_data] , [contentType] from [images] where [image_id] = @imageId and [product_id] = @pid";
+                String query = "Select [image_data] , [contentType] from [images] where [index] = @imageId and [product_id] = @pid";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@imageId", imageId));

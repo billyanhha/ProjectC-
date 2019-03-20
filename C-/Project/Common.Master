@@ -35,7 +35,7 @@
                         <p>Notification</p>
                     </a>
                     <a class="navLink navbar-right-item " href="#">
-                        <i class="fas fa-shopping-basket icon"></i>
+                        <i class="fas fa-eye icon"></i>
                         <p>Watched product</p>
                     </a>
                     <div class="dropdown navbar-right-item">
