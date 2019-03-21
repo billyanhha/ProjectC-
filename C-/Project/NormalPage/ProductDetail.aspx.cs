@@ -23,6 +23,8 @@ namespace Project.NormalPage
             redirectIfUrlNotValid();
             loadProductInfo();
             editModal.product = product;
+            deleteModal.createdBy = createdBy;
+            deleteModal.id = id;
         }
 
         private void redirectIfUrlNotValid()
@@ -176,7 +178,7 @@ namespace Project.NormalPage
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     string category = reader["category_name"].ToString();
                     string categoryId = reader["category_id"].ToString();
@@ -235,7 +237,7 @@ namespace Project.NormalPage
             try
             {
                 connection = new SqlConnection(connStr);
-                string query =  "SELECT Count([order_id]) as productNumber FROM [dbo].[orders_products] where product_id =  " + id;
+                string query = "SELECT Count([order_id]) as productNumber FROM [dbo].[orders_products] where product_id =  " + id;
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -258,6 +260,36 @@ namespace Project.NormalPage
             }
         }
 
+        protected void switchBtn_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = null;
+            if (checkAuthoriseForQuery())
+            {
+                try
+                {
+                    connection = new SqlConnection(connStr);
+                    string query = "Update products Set status = status ^ 1 where product_id = " + id;
+                    SqlCommand command = new SqlCommand(query, connection);
 
+                    connection.Open();
+
+                    command.ExecuteNonQuery();
+                    loadProductInfo();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                Response.Redirect("/error?message=No authorise");
+
+            }
+        }
     }
 }

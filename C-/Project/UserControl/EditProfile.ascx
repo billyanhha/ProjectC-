@@ -28,5 +28,5 @@
             runat="server"
             CssClass="form-control addressC" placeholder="Enter address"></asp:TextBox>
     </div>
-    <asp:Button runat="server" OnClick ="edit" ID="EditSubmitBtn" CssClass="btn btn-primary btn-sm editBtn"  Text="Submit edit" />
+    <asp:Button runat="server"  OnClick ="edit" ID="EditSubmitBtn" CssClass="btn btn-primary btn-sm editBtn"  Text="Submit edit" />
 </div>

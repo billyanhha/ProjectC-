@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="Project.NormalPage.ProductDetail" %>
-<%@ Register TagPrefix ="UC" TagName="EditProduct" Src ="~/UserControl/EditProduct.ascx" %>
+
+<%@ Register TagPrefix="UC" TagName="EditProduct" Src="~/UserControl/EditProduct.ascx" %>
+<%@ Register TagPrefix="UC" TagName="DeleteProduct" Src="~/UserControl/DeletProduct.ascx" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <link rel="stylesheet" href="../../css/productDetail.css" />
-    <UC:EditProduct runat ="server"  id ="editModal" />
+    <UC:EditProduct runat="server" ID="editModal" />
+    <UC:DeleteProduct runat="server" id="deleteModal" />
     <div class="page-layout white-background ">
         <h3 runat="server" id="noProduct">No product</h3>
         <div class="row no-margin product-detail" id="productDetail" style="" runat="server">
@@ -51,7 +54,10 @@
                             <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#myModal">
                                 Edit product
                             </button>
-                            <a class="dropdown-item" href="#">Switch status</a>
+                            <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#deleteModal">
+                                Delete product
+                            </button>
+                            <asp:Button ID="switchBtn" OnClick ="switchBtn_Click" ValidateRequestMode ="Disabled"  class="btn dropdown-item" runat="server" Text="Switch status" />
                         </div>
                     </div>
                 </div>

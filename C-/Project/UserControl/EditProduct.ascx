@@ -21,6 +21,7 @@
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator1"
+                        ValidationGroup="edit"
                         ControlToValidate="productName"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
@@ -38,6 +39,7 @@
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator2"
                         ControlToValidate="productDes"
+                        ValidationGroup="edit"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
                     </asp:RequiredFieldValidator>
@@ -54,6 +56,7 @@
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator3"
                         ControlToValidate="shipInfo"
+                        ValidationGroup="edit"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
                     </asp:RequiredFieldValidator>
@@ -81,11 +84,13 @@
                             ID="RequiredFieldValidator4"
                             ControlToValidate="fileImages"
                             Display="Dynamic"
-                            runat="server" ErrorMessage="You have to prodive images as evidence">
+                            ValidationGroup="edit"
+                            runat="server"
+                            ErrorMessage="You have to prodive images as evidence">
                         </asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <asp:Button runat="server" ID="editProductBtn" CssClass="btn btn-primary btn-block addProductBtn" Text="Edit product" OnClick="editProductBtn_Click" />
+                <asp:Button ValidationGroup ="edit" runat="server" ID="editProductBtn" CssClass="btn btn-primary btn-block addProductBtn" Text="Edit product" OnClick="editProductBtn_Click" UseSubmitBehavior="False" />
 
             </div>
 

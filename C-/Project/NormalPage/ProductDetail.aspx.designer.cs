@@ -22,6 +22,15 @@ namespace Project.NormalPage {
         protected global::Project.UserControl.EditProduct editModal;
         
         /// <summary>
+        /// deleteModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Project.UserControl.DeletProduct deleteModal;
+        
+        /// <summary>
         /// noProduct control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Project.NormalPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl editProduct;
+        
+        /// <summary>
+        /// switchBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button switchBtn;
         
         /// <summary>
         /// productCategory control.

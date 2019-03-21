@@ -87,6 +87,7 @@
     <Content Include="NormalPage\Setting.aspx" />
     <Content Include="UserControl\ChangePassword.ascx" />
     <Content Include="UserControl\Deactive.ascx" />
+    <Content Include="UserControl\DeletProduct.ascx" />
     <Content Include="UserControl\EditProduct.ascx" />
     <Content Include="UserControl\EditProfile.ascx" />
     <Content Include="UserControl\Loading.ascx" />
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="UserControl\Deactive.ascx.designer.cs">
       <DependentUpon>Deactive.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\DeletProduct.ascx.cs">
+      <DependentUpon>DeletProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\DeletProduct.ascx.designer.cs">
+      <DependentUpon>DeletProduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControl\EditProduct.ascx.cs">
       <DependentUpon>EditProduct.ascx</DependentUpon>
