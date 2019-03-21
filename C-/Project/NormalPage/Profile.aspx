@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <br />
-                <p class="profile-info-item-detail">*** <b runat="server" id="description"></b></p>
+                <p class="profile-info-item-detail">*** <b runat="server" class="wrap" id="description"></b></p>
                 <div runat="server" id="rateDiv">
                     <div class="rate">
                         <asp:TextBox runat="server" CssClass="form-control" ViewStateMode ="Disabled" ID ="score" type="number" max="5" min="1" />

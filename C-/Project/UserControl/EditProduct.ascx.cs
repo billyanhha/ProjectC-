@@ -5,114 +5,98 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ChocuModel;
-using System.Web.Configuration;
 using System.Data.SqlClient;
+using System.Web.Configuration;
 using System.IO;
-namespace Project.NormalPage
+
+namespace Project.UserControl
 {
-    public partial class AddProduct : System.Web.UI.Page
+    public partial class EditProduct : System.Web.UI.UserControl
     {
-
-        public int uid { get; set; }
-        public int insertId { get; set; }
-
-        SqlConnection connection = null;
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
-        User currentUser;
+        public Product product { get; set; }
+        SqlConnection connection;
+
+
+        public EditProduct()
+        {
+            connection = new SqlConnection(connStr);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            redirect();
-        }
-
-        private void redirect()
-        {
-          
-            if (checkAuthen())
+            if (!Page.IsPostBack)
             {
-                uid = (currentUser.ID);
-                // intilize connection
-                connection = new SqlConnection(connStr);
-            }
-            else
-            {
-                Response.Redirect("/error?message=No authorization");
+                loadData();
             }
         }
 
-        private bool checkAuthen()
+
+        private void loadData()
         {
-            currentUser = Session["authenUser"] as User;
-            if (currentUser != null)
+            if (product != null)
             {
-                return true;
+                productName.Text = product.productName;
+                productDes.Text = product.description;
+                shipInfo.Text = product.shipInfo;
+                categoryDropDown.SelectedValue = product.category;
             }
+        }
+
+        private Boolean checkAuthor()
+        {
+
+            if (Session["authenUser"] != null)
+            {
+                User user = Session["authenUser"] as User;
+
+                if (user.ID == int.Parse(product.createdBy))
+                {
+                    return true;
+                }
+            }
+
             return false;
+
         }
 
-        
 
-        protected void addProduct_Click(object sender, EventArgs e)
+        protected void editProductBtn_Click(object sender, EventArgs e)
         {
+
             try
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "disableButton", "$('.addProductBtn').attr('disabled', '');", true);
-                if (Page.IsValid)
+                if (!checkAuthor())
                 {
-                    insertInfo();
-                    insertCategory();
-                    insertImage();
-                    Response.Redirect("/product/detail/" + insertId);
+                    Response.Redirect("/error?message=No authorise");
+                }
+                else
+                {
+                    editInfo();
+                    editCategory();
+                    editImage();
+                    Response.Redirect("/product/detail/" + product.id);
                 }
             }
             catch (Exception)
             {
                 throw;
             }
-            finally
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "removeDisable", "$('.addProductBtn').removeAttr('disabled');", true);
-            }
         }
 
-        private void insertInfo()
+        private void editInfo()
         {
             try
             {
-                String query = "INSERT  INTO [dbo].[products]([product_name],[description],[ship_info], createdBy) OUTPUT INSERTED.[product_id] VALUES(@name , @des, @info , @uid)";
+                String query = "Update [dbo].[products] Set [product_name] = @name,[description] = @des,[ship_info] = @info Where products.[product_id] = " + product.id;
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@name", productName.Text));
                 command.Parameters.Add(new SqlParameter("@des", productDes.Text));
                 command.Parameters.Add(new SqlParameter("@info", shipInfo.Text));
-                command.Parameters.Add(new SqlParameter("@uid", uid));
 
-                connection.Open();
-                insertId = (int)command.ExecuteScalar();
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        private void insertCategory()
-        {
-            try
-            {
-                String query = "INSERT INTO [dbo].[products_category] ([category_id],[product_id]) VALUES (@cid,@pid)";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                command.Parameters.Add(new SqlParameter("@cid", DropDownList1.SelectedValue));
-                command.Parameters.Add(new SqlParameter("@pid", insertId));
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -128,26 +112,52 @@ namespace Project.NormalPage
             }
         }
 
-        private void insertImage()
-        {
 
+        private void editCategory()
+        {
+            try
+            {
+                String query = "UPDATE [dbo].[products_category] Set [category_id] = @cid Where [product_id] = @pid ";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.Add(new SqlParameter("@cid", categoryDropDown.SelectedValue));
+                command.Parameters.Add(new SqlParameter("@pid", product.id));
+
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void editImage()
+        {
             try
             {
                 String query = "";
                 if (fileImages.HasFiles)
                 {
+                    query += "Delete From [dbo].[images] where product_id = " + product.id;
+                    query += "\n";
                     int index = 0;
                     foreach (HttpPostedFile uploadedFile in fileImages.PostedFiles)
                     {
                         index++;
-
-                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id] , [index]) VALUES (@data" + index+ ", @type"+index+ " , @id" + index + " , @index" + index +  " ) \n";
+                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id] , [index]) VALUES (@data" + index + ", @type" + index + " , @id" + index + " , @index" + index + " ) \n";
 
                     }
 
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    int index1= 0;
+                    int index1 = 0;
                     foreach (HttpPostedFile uploadedFile in fileImages.PostedFiles)
                     {
                         index1++;
@@ -160,9 +170,9 @@ namespace Project.NormalPage
 
                         string mimeType = Path.GetExtension(uploadedFile.FileName);
 
-                        command.Parameters.Add(new SqlParameter("@data"+index1 , data));
+                        command.Parameters.Add(new SqlParameter("@data" + index1, data));
                         command.Parameters.Add(new SqlParameter("@type" + index1, mimeType));
-                        command.Parameters.Add(new SqlParameter("@id" + index1, insertId));
+                        command.Parameters.Add(new SqlParameter("@id" + index1, product.id));
                         command.Parameters.Add(new SqlParameter("@index" + index1, index1));
 
                     }
@@ -171,15 +181,16 @@ namespace Project.NormalPage
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
             }
             finally
             {
                 connection.Close();
             }
         }
+
     }
 }

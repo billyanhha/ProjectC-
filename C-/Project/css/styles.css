@@ -10,9 +10,6 @@
     justify-content: center;
 }
 
-.white-background {
-    background-color: #fff;
-}
 
 .no-margin {
     margin-left: 0 !important;
@@ -68,12 +65,19 @@
 .preview-image-item {
     width: 100px;
     height: 100px;
-    border: 1px solid #189eff;
+    border: 2px solid #189eff;
     border-radius: 5px;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
+
+    .preview-image-item:hover {
+        opacity: 0.5;
+        border: 2px solid red;
+    }
 
 .preview-image-clear {
     font-size: 25px;

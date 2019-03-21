@@ -31,12 +31,14 @@
     font-size: 16px;
     word-wrap: break-word;
     border-radius: 5px;
+    white-space: pre-line;
 }
 
 .product-ship {
     font-size: 16px;
     word-wrap: break-word;
     border-radius: 5px;
+    white-space: pre-line;
 }
 
 .status {
@@ -72,6 +74,6 @@
         cursor: pointer;
     }
 
-.orderDiv , .editIcon {
+.orderDiv, .editIcon {
     display: none;
 }

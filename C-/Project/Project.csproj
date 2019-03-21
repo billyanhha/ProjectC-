@@ -87,6 +87,7 @@
     <Content Include="NormalPage\Setting.aspx" />
     <Content Include="UserControl\ChangePassword.ascx" />
     <Content Include="UserControl\Deactive.ascx" />
+    <Content Include="UserControl\EditProduct.ascx" />
     <Content Include="UserControl\EditProfile.ascx" />
     <Content Include="UserControl\Loading.ascx" />
     <Content Include="UserControl\Message.ascx" />
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="UserControl\Deactive.ascx.designer.cs">
       <DependentUpon>Deactive.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\EditProduct.ascx.cs">
+      <DependentUpon>EditProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\EditProduct.ascx.designer.cs">
+      <DependentUpon>EditProduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControl\EditProfile.ascx.cs">
       <DependentUpon>EditProfile.ascx</DependentUpon>

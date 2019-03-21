@@ -85,6 +85,13 @@
 }
 
 
+.wrap {
+        white-space:pre-line;
+
+}
+
+
+
 .preImage {
     width: 100%;
     margin-top: 10px;

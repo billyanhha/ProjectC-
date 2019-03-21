@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="Project.NormalPage.AddProduct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <div class="page-layout">
+    <div class="page-layout white-background">
         <h3>Add product</h3>
         <br />
         <div class="form-group">
@@ -25,7 +25,7 @@
                 runat="server"
                 TextMode="multiline"
                 CssClass="form-control"
-                placeholder="Tell about urself">
+                placeholder="Tell about your product">
             </asp:TextBox>
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator2"
@@ -41,7 +41,7 @@
                 runat="server"
                 TextMode="multiline"
                 CssClass="form-control"
-                placeholder="Tell about urself">
+                placeholder="Ship info">
             </asp:TextBox>
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator3"

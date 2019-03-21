@@ -15,6 +15,7 @@ namespace Project.UserControl
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

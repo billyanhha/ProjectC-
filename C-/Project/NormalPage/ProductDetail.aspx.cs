@@ -14,24 +14,22 @@ namespace Project.NormalPage
     {
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
-
-        public string id { get; set; }
-
+        private Product product;
+        public string id;
+        private string createdBy;
         protected void Page_Load(object sender, EventArgs e)
         {
+            product = new Product();
             redirectIfUrlNotValid();
-            loadItem();
+            loadProductInfo();
+            editModal.product = product;
         }
 
         private void redirectIfUrlNotValid()
         {
             if (Page.RouteData.Values["id"] == null)
             {
-                Response.Redirect("/error?msg=404 Not found");
-            }
-            else
-            {
-                id = Page.RouteData.Values["id"].ToString();
+                Response.Redirect("/error?message=404 Not found");
             }
         }
 
@@ -44,7 +42,7 @@ namespace Project.NormalPage
 
                 User user = Session["authenUser"] as User;
 
-                if (user.ID != int.Parse(id)) // add edit icon to owner and remove order button
+                if (user.ID == int.Parse(createdBy)) // add edit icon to owner and remove order button
                 {
                     order.Attributes["style"] = "display: none";
                     editProduct.Attributes["style"] = "display: block";
@@ -52,11 +50,202 @@ namespace Project.NormalPage
             }
         }
 
+        private bool checkAuthoriseForQuery()
+        {
+
+            if (Session["authenUser"] != null)
+            {
+                User user = Session["authenUser"] as User;
+
+                if (user.ID == int.Parse(createdBy))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void loadProductInfo()
+        {
+            id = Page.RouteData.Values["id"].ToString();
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(connStr);
+                string query = "Select * from products where product_id = " + id + "and active = 1";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader rd = command.ExecuteReader();
+
+                if (rd.HasRows)
+                {
+                    noProduct.Visible = false;
+                    while (rd.Read())
+                    {
+                        getCategory();
+                        //status intilialize
+                        sold.Visible = false;
+                        selling.Visible = true;
+
+                        // get owner id
+                        createdBy = rd["createdBy"].ToString();
+                        increaseView();
+                        loadItem();
+                        loadOrderNumber();
+                        // name
+                        string product_name = rd["product_name"].ToString();
+                        productName.InnerHtml = product_name;
+
+                        // description
+                        string description = rd["description"].ToString();
+                        productDescription.InnerHtml = description;
+
+                        // ship info
+                        string ship = rd["ship_info"].ToString();
+                        productShipInfo.InnerHtml = ship;
+
+                        // ship info
+                        string view = rd["viewNumber"].ToString();
+                        productView.InnerHtml = view;
+
+                        // status
+                        bool status = Convert.ToBoolean(rd["status"]);
+                        if (!status)
+                        {
+                            sold.Visible = true;
+                            selling.Visible = false;
+                        }
+
+                        product.id = id;
+                        product.createdBy = createdBy;
+                        product.productName = product_name;
+                        product.description = description;
+                        product.shipInfo = ship;
+                    }
+                }
+                else
+                {
+                    noProduct.Visible = true;
+                    productDetail.Attributes["style"] = "display: none";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void increaseView()
+        {
+            if (!checkAuthoriseForQuery())
+            {
+                SqlConnection connection = null;
+                try
+                {
+                    connection = new SqlConnection(connStr);
+                    string query = "Update products SET viewNumber = viewNumber + 1 Where product_id = " + id;
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        private void getCategory()
         {
             SqlConnection connection = null;
             try
             {
+                connection = new SqlConnection(connStr);
+                string query = "Select category_name , category.[category_id] from products , category , products_category where products.[product_id] = [products_category].[product_id] and category.[category_id] =  [products_category].[category_id] and products.[product_id] = " + id;
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    string category = reader["category_name"].ToString();
+                    string categoryId = reader["category_id"].ToString();
+                    productCategory.InnerHtml = category;
+                    product.category = categoryId;
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public int getProductImage()
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(connStr);
+                string query = "SELECT count(product_id) as total FROM [dbo].[images] where product_id = " + id;
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int totalImage = int.Parse(reader["total"].ToString());
+                    product.totalImage = totalImage;
+                    return totalImage;
+                }
+
+                return 0;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void loadOrderNumber()
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(connStr);
+                string query =  "SELECT Count([order_id]) as productNumber FROM [dbo].[orders_products] where product_id =  " + id;
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    productOrder.InnerHtml = reader["productNumber"].ToString() + " ";
+                }
+
 
             }
             catch (Exception)
