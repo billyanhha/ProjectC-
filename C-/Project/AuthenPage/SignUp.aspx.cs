@@ -22,7 +22,7 @@ namespace Project
             }
         }
 
-        protected void SumbitBtn_Click(object sender , EventArgs e)
+        protected void SumbitBtn_Click(object sender, EventArgs e)
         {
             SqlConnection connection = null;
             try
@@ -44,7 +44,8 @@ namespace Project
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "show message", "$('.popup').addClass(\"appear\");", true);
-            } finally
+            }
+            finally
             {
                 connection.Close();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "removeAttr", "$('.loginBtn').removeAttr('disabled');", true);
@@ -54,25 +55,36 @@ namespace Project
         private void getUserJustCreated()
         {
             SqlConnection connection = new SqlConnection(connStr); ;
-            String query = "Select username , id from users where username = @username and password = @password";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.Add(new SqlParameter("@username", usernameTxt.Text));
-            cmd.Parameters.Add(new SqlParameter("@password", passwordTxt.Text));
-
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                User user = new User();
-                user.ID = int.Parse(dr["id"].ToString());
-                user.Username = dr["username"].ToString();
-                Session["authenUser"] = user;
-                Response.Redirect("/home");
-            }
+                String query = "Select username , id from users where username = @username and password = @password";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.Add(new SqlParameter("@username", usernameTxt.Text));
+                cmd.Parameters.Add(new SqlParameter("@password", passwordTxt.Text));
 
-            connection.Close();
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    User user = new User();
+                    user.ID = int.Parse(dr["id"].ToString());
+                    user.Username = dr["username"].ToString();
+                    Session["authenUser"] = user;
+                    Response.Redirect("/home");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
 

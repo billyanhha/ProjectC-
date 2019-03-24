@@ -16,6 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/index.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +26,7 @@
                 <!-- Brand -->
                 <a class="navLink store-name" href="/home">Chocu</a>
                 <div class="nav-input">
-                    <asp:TextBox ID="TextBox1" ValidationGroup ="search" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="search" ValidationGroup="search" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <i class="fas fa-list-ul list" style="color: #189eff"></i>
@@ -59,9 +61,12 @@
                             <asp:Button UseSubmitBehavior="false" CausesValidation="false" CssClass="dropdown-item" OnClick="logout" ID="Button1" runat="server" Text="Logout" />
                         </div>
                     </div>
-                    <a class="navLink navbar-right-item cart" href="#">
+                    <a class="navLink navbar-right-item cart" href="/cart">
                         <i class="fas fa-cart-plus icon"></i>
                         <p>Your cart</p>
+                        <div class="cart-number" runat="server" id="cartnNumber">
+                            0
+                        </div>
                     </a>
                 </div>
             </nav>

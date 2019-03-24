@@ -62,7 +62,7 @@
     <Content Include="css\authenPageStyle.css" />
     <Content Include="css\error.css" />
     <Content Include="css\header.css" />
-    <Content Include="css\home.css" />
+    <Content Include="css\homeCategory.css" />
     <Content Include="css\productDetail.css" />
     <Content Include="css\profile.css" />
     <Content Include="css\setting.css" />
@@ -79,6 +79,8 @@
     <Content Include="js\login.js" />
     <Content Include="js\index.js" />
     <Content Include="NormalPage\AddProduct.aspx" />
+    <Content Include="NormalPage\Cart.aspx" />
+    <Content Include="NormalPage\Categories.aspx" />
     <Content Include="NormalPage\ErrorPage.aspx" />
     <Content Include="NormalPage\Home.aspx" />
     <Content Include="NormalPage\Image.aspx" />
@@ -119,6 +121,20 @@
     </Compile>
     <Compile Include="NormalPage\AddProduct.aspx.designer.cs">
       <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
     </Compile>
     <Compile Include="NormalPage\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
@@ -169,6 +185,8 @@
     <Compile Include="NormalPage\Setting.aspx.designer.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pagination\BaseWebComponent.cs" />
+    <Compile Include="Pagination\Pagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenPage\SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>

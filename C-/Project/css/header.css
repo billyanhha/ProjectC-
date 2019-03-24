@@ -105,6 +105,16 @@ input {
     background-color: #fff;
 }
 
+.cart-number{
+    margin-left: 10px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: #fdd835;
+    color: #000;
+}
+
 
 
 @media screen and (max-width: 768px) {

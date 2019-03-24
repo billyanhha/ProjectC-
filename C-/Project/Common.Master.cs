@@ -15,6 +15,24 @@ namespace Project
         protected void Page_Load(object sender, EventArgs e)
         {
             getUser();
+            cartnNumber.InnerHtml = getNumberOfCart() + "";
+        }
+
+        public int getNumberOfCart()
+        {
+            if (Request.Cookies["cart"] != null)
+            {
+                HttpCookie cookie = Request.Cookies["cart"];
+                List<String> list = new List<string>();
+                list = cookie.Value.Split('-').ToList();
+                list.RemoveAll(x => string.IsNullOrWhiteSpace(x) || string.IsNullOrEmpty(x));
+                return list.Count;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
 
 
@@ -39,10 +57,6 @@ namespace Project
 
     
 
-
-
-
-
         protected void logout(object sender, EventArgs e)
         {
             Session.Abandon();
@@ -50,7 +64,6 @@ namespace Project
             Response.Cookies["id"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/login");
         }
-
 
     }
 }

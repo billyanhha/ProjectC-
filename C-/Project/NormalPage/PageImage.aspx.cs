@@ -43,9 +43,9 @@ namespace Project.NormalPage
 
         private void renderImage(int id)
         {
+            SqlConnection connection = new SqlConnection(connStr);
             try
             {
-                SqlConnection connection = new SqlConnection(connStr);
                 String query = "Select avatar , contentType from users where id = @id";
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -84,6 +84,10 @@ namespace Project.NormalPage
             {
 
                 throw ex;
+            } finally
+            {
+                connection.Close();
+
             }
         }
     }

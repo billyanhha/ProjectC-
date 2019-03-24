@@ -35,9 +35,9 @@ namespace Project.NormalPage
 
         private void renderImage(string pid, string imageId)
         {
+            SqlConnection connection = new SqlConnection(connStr);
             try
             {
-                SqlConnection connection = new SqlConnection(connStr);
                 String query = "Select [image_data] , [contentType] from [images] where [index] = @imageId and [product_id] = @pid";
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -73,11 +73,14 @@ namespace Project.NormalPage
                     Response.BinaryWrite(data);
                     Response.Flush();
                 }
+
             }
             catch (Exception ex)
             {
 
-                throw ex;
+            } finally
+            {
+                connection.Close();
             }
         }
     }

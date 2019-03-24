@@ -61,8 +61,9 @@
                         </div>
                     </div>
                 </div>
+                <p><span class="small-description">Shop : </span><a runat="server" id="ownerName" href="#">User</a></p>
                 <p><span class="small-description">Category : </span><a runat="server" id="productCategory" href="#">Category</a></p>
-                <p >Price : <b runat="server" class="price-color" id="productPrice"></b></p>
+                <p><span class="small-description">Price : </span><b runat="server" class="price-color" id="productPrice"></b></p>
                 <p class="normal-text">
                     <b runat="server" id="productView">15</b> views - 
                     <b class="primarycolor-text" runat="server" id="productOrder">0 </b>order
@@ -82,7 +83,7 @@
                     <span runat="server" id="selling" class="status selling">Selling</span>
                 </p>
                 <div runat="server" id="order" class="orderDiv" style="">
-                    <asp:Button ID="orderBtn" runat="server" CssClass="btn btn-outline-primary btn-block" Text="Order" />
+                    <asp:Button ID="addToCartBtn" OnClick="addToCartBtn_Click" ValidateRequestMode="Disabled" ValidationGroup="addCart" runat="server" CssClass="btn btn-outline-primary btn-block" Text="Add to cart" />
                     <p class="small-description">* Order to let owner know you interested in the product</p>
                 </div>
             </div>

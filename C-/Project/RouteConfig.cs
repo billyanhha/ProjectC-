@@ -15,6 +15,8 @@ namespace Project
             //normal page
             routes.MapPageRoute("Default", "", "~/NormalPage/Home.aspx" , true);
             routes.MapPageRoute("Home", "home", "~/NormalPage/Home.aspx" , true);
+            routes.MapPageRoute("Category", "category/{id}/{name}", "~/NormalPage/Categories.aspx", true);
+            routes.MapPageRoute("Cart", "cart", "~/NormalPage/Cart.aspx", true);
 
             //profile
             routes.MapPageRoute("Profile", "user/detail/{id}", "~/NormalPage/Profile.aspx", true);

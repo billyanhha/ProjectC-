@@ -3,43 +3,40 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <link rel="stylesheet" type="text/css" href="../css/home.css" />
+    <%-- css --%>
+    <link rel="stylesheet" type="text/css" href="../css/homeCategory.css" />
+    <%--  --%>
     <div class="home-layout">
         <div class="category">
-            <div class="category-item">
-                Clothe
-            </div>
-            <div class="category-item">
-                Sport
-            </div>
-            <div class="category-item">
-                Fashion
-            </div>
-            <div class="category-item">
-                Vehicle
-            </div>
-            <div class="category-item">
-                Gaming
-            </div>
-            <div class="category-item">
-                Electronic
-            </div>
-            <div class="category-item">
-                Kids stuff
-            </div>
+
+            <% foreach (ChocuModel.Category item in categories)
+                { %>
+            <a href ="/category/<%=item.ID%>/<%=item.CategoryName%>"  class="category-item">
+                <%=item.CategoryName %>
+            </a>
+            <%} %>
         </div>
+
+
+        <% foreach (ChocuModel.Category item in categories)
+            { %>
         <div class="category-product">
-            <h3 class="category-name">Gaming</h3>
+            <h4 class="category-name"><%=item.CategoryName %></h4>
             <div class="category-product-items">
-                <%for (int i = 0; i < 8; i++)
+                <%foreach (ChocuModel.Product product in getProductByCategory(item.ID))
                     { %>
-                <div class="category-product-item">
-                    <img class="category-product-item-image" src="../images/default_user.png" />
-                    <p><b class="product-name">Product name</b></p>
-                    <p>Price : <b class="primarycolor-text">xx</b> </p>
-                </div>
+                <a href ="/product/detail/<%=product.id%>" class="category-product-item">
+                    <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')" ></div>
+                    <p><b class="product-name"><%=product.productName %></b></p>
+                    <p>Price : <b class="primarycolor-text"><%=product.price %></b> </p>
+                </a>
                 <% } %>
             </div>
+            <div>
+                <a href ="/category/<%=item.ID%>/<%=item.CategoryName%>"class ="small">View full category</a>
+            </div>
         </div>
+        <%} %>
+
     </div>
 </asp:Content>

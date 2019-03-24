@@ -32,6 +32,16 @@ namespace Project.NormalPage
             if (Page.RouteData.Values["id"] == null)
             {
                 Response.Redirect("/error?message=404 Not found");
+            } else
+            {
+                id = Page.RouteData.Values["id"].ToString();
+                if (checkProductInCartList())
+                {
+                    addToCartBtn.Text = "Remove from cart";
+                } else
+                {
+                    addToCartBtn.Text = "Add to cart";
+                }
             }
         }
 
@@ -70,12 +80,21 @@ namespace Project.NormalPage
 
         private void loadProductInfo()
         {
-            id = Page.RouteData.Values["id"].ToString();
             SqlConnection connection = null;
             try
             {
                 connection = new SqlConnection(connStr);
-                string query = "Select * from products where product_id = " + id + "and active = 1";
+                string query = @"SELECT [product_id]
+                      ,[product_name]
+                      ,[products].[description]
+                      ,[ship_info]
+                      ,[status]
+                      ,[viewNumber]
+                      ,[createdBy]
+	                  , username
+                      ,[price]
+                  FROM [dbo].[products] , users
+                  where [products].createdBy = users.id and product_id = " + id + "and [products].[active] = 1";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -93,6 +112,10 @@ namespace Project.NormalPage
 
                         // get owner id
                         createdBy = rd["createdBy"].ToString();
+                        string username = rd["username"].ToString();
+                        ownerName.Attributes["href"] = "/user/detail/" + createdBy;
+                        ownerName.InnerHtml = username;
+
                         increaseView();
                         loadItem();
                         loadOrderNumber();
@@ -189,7 +212,7 @@ namespace Project.NormalPage
                     string categoryId = reader["category_id"].ToString();
                     productCategory.InnerHtml = category;
                     product.category = categoryId;
-
+                    productCategory.Attributes["href"] = "/category/" + categoryId + "/" + category;
                 }
 
 
@@ -295,6 +318,55 @@ namespace Project.NormalPage
                 Response.Redirect("/error?message=No authorise");
 
             }
+        }
+
+        protected void addToCartBtn_Click(object sender, EventArgs e)
+        {
+            if (checkProductInCartList())
+            {
+                HttpCookie cookie = Request.Cookies["cart"];
+                string editCokkie = cookie.Value;
+
+                int index = editCokkie.IndexOf(id);
+                string cleanPath = (index < 0)
+                    ? editCokkie
+                    : editCokkie.Remove(index, id.Length + 1);
+
+                cookie.Value = cleanPath;
+
+                Response.Cookies.Add(cookie);
+            }
+            else
+            {
+                if (Request.Cookies["cart"] == null)
+                {
+                    HttpCookie cookie = new HttpCookie("cart");
+                    cookie.Value = id + "-";
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+                }
+                else
+                {
+                    HttpCookie cookie = Request.Cookies["cart"];
+                    cookie.Value += (id + "-");
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+                }
+            }
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        private bool checkProductInCartList()
+        {
+            if (Request.Cookies["cart"] != null)
+            {
+                HttpCookie cookie = Request.Cookies["cart"];
+                if(cookie.Value.Contains(id))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

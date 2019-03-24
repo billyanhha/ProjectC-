@@ -16,16 +16,17 @@ namespace Project.NormalPage
         public int uid { get; set; }
         public int insertId { get; set; }
 
-    
-        SqlConnection connection = null;
+
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
+        private SqlConnection connection = null;
 
         User currentUser;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             redirect();
+
         }
 
         private void redirect()
@@ -34,7 +35,6 @@ namespace Project.NormalPage
             {
                 uid = (currentUser.ID);
                 // intilize connection
-                connection = new SqlConnection(connStr);
             }
             else
             {
@@ -56,6 +56,7 @@ namespace Project.NormalPage
 
         protected void addProduct_Click(object sender, EventArgs e)
         {
+            connection = new SqlConnection(connStr);
             try
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "disableButton", "$('.addProductBtn').attr('disabled', '');", true);
