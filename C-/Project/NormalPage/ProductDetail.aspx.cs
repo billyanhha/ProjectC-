@@ -108,7 +108,11 @@ namespace Project.NormalPage
                         string ship = rd["ship_info"].ToString();
                         productShipInfo.InnerHtml = ship;
 
-                        // ship info
+                        //price 
+                        string price = rd["price"].ToString();
+                        productPrice.InnerHtml = price;
+
+                        // view
                         string view = rd["viewNumber"].ToString();
                         productView.InnerHtml = view;
 
@@ -121,6 +125,7 @@ namespace Project.NormalPage
                         }
 
                         product.id = id;
+                        product.price = Convert.ToDouble(price);
                         product.createdBy = createdBy;
                         product.productName = product_name;
                         product.description = description;

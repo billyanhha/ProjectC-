@@ -77,3 +77,7 @@
 .orderDiv, .editIcon {
     display: none;
 }
+
+.price-color {
+    color: #189eff;
+}

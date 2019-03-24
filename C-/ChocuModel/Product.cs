@@ -13,6 +13,8 @@ namespace ChocuModel
 
         public string createdBy { get; set; }
 
+        public double price { get; set; }
+
         public string shipInfo { get; set; }
 
         public string category { get; set; }

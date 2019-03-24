@@ -24,7 +24,7 @@
                 <!-- Brand -->
                 <a class="navLink store-name" href="/home">Chocu</a>
                 <div class="nav-input">
-                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" ValidationGroup ="search" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <i class="fas fa-list-ul list" style="color: #189eff"></i>

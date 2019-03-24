@@ -40,6 +40,7 @@ namespace Project.UserControl
             {
                 productName.Text = product.productName;
                 productDes.Text = product.description;
+                price.Text = product.price + "";
                 shipInfo.Text = product.shipInfo;
                 categoryDropDown.SelectedValue = product.category;
             }
@@ -90,12 +91,13 @@ namespace Project.UserControl
         {
             try
             {
-                String query = "Update [dbo].[products] Set [product_name] = @name,[description] = @des,[ship_info] = @info Where products.[product_id] = " + product.id;
+                String query = "Update [dbo].[products] Set [product_name] = @name,[description] = @des,[ship_info] = @info , price = @price Where products.[product_id] = " + product.id;
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@name", productName.Text));
                 command.Parameters.Add(new SqlParameter("@des", productDes.Text));
                 command.Parameters.Add(new SqlParameter("@info", shipInfo.Text));
+                command.Parameters.Add(new SqlParameter("@price", price.Text));
 
 
                 connection.Open();

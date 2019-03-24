@@ -28,6 +28,23 @@
                     </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Price</label>
+                    <asp:TextBox
+                        ID="price"
+                        runat="server"
+                        type="number"
+                        CssClass="form-control"
+                        placeholder="Enter price">
+                    </asp:TextBox>
+                    <asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator5"
+                        ControlToValidate="price"
+                        Display="Dynamic"
+                        ValidationGroup="edit"
+                        runat="server" ErrorMessage="Required">
+                    </asp:RequiredFieldValidator>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1">Description</label>
                     <asp:TextBox
                         ID="productDes"
@@ -90,7 +107,7 @@
                         </asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <asp:Button ValidationGroup ="edit" runat="server" ID="editProductBtn" CssClass="btn btn-primary btn-block addProductBtn" Text="Edit product" OnClick="editProductBtn_Click" UseSubmitBehavior="False" />
+                <asp:Button ValidationGroup="edit" runat="server" ID="editProductBtn" CssClass="btn btn-primary btn-block addProductBtn" Text="Edit product" OnClick="editProductBtn_Click" UseSubmitBehavior="False" />
 
             </div>
 

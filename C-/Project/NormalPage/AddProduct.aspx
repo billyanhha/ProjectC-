@@ -5,7 +5,7 @@
         <h3>Add product</h3>
         <br />
         <div class="form-group">
-            <label runat ="server" id="test" for="exampleInputEmail1">Product name</label>
+            <label runat="server" id="test" for="exampleInputEmail1">Product name</label>
             <asp:TextBox ID="productName"
                 runat="server"
                 CssClass="form-control"
@@ -14,6 +14,7 @@
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator1"
                 ControlToValidate="productName"
+                ValidationGroup="add"
                 Display="Dynamic"
                 runat="server" ErrorMessage="Required">
             </asp:RequiredFieldValidator>
@@ -30,6 +31,24 @@
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator2"
                 ControlToValidate="productDes"
+                ValidationGroup="add"
+                Display="Dynamic"
+                runat="server" ErrorMessage="Required">
+            </asp:RequiredFieldValidator>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Price</label>
+            <asp:TextBox
+                ID="price"
+                runat="server"
+                type="number"
+                CssClass="form-control"
+                placeholder="Enter price">
+            </asp:TextBox>
+            <asp:RequiredFieldValidator
+                ID="RequiredFieldValidator5"
+                ValidationGroup="add"
+                ControlToValidate="price"
                 Display="Dynamic"
                 runat="server" ErrorMessage="Required">
             </asp:RequiredFieldValidator>
@@ -46,6 +65,7 @@
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator3"
                 ControlToValidate="shipInfo"
+                ValidationGroup="add"
                 Display="Dynamic"
                 runat="server" ErrorMessage="Required">
             </asp:RequiredFieldValidator>
@@ -62,7 +82,7 @@
                 <asp:FileUpload ID="fileImages"
                     AllowMultiple="true"
                     accept="image/*"
-                    CssClass ="multiFileUpload"
+                    CssClass="multiFileUpload"
                     runat="server" />
 
 
@@ -72,12 +92,14 @@
                 <asp:RequiredFieldValidator
                     ID="RequiredFieldValidator4"
                     ControlToValidate="fileImages"
+                    ValidationGroup="add"
                     Display="Dynamic"
                     runat="server" ErrorMessage="You have to prodive images as evidence">
                 </asp:RequiredFieldValidator>
             </div>
         </div>
-        <asp:Button runat="server" OnClick="addProduct_Click" ID="addProduct" CssClass="btn btn-primary btn-block addProductBtn" Text="Add product" />
+        <asp:Button runat="server" ValidationGroup="add"
+            OnClick="addProduct_Click" ID="addProduct" CssClass="btn btn-primary btn-block addProductBtn" Text="Add product" />
     </div>
 
 

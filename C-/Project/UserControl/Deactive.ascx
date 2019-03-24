@@ -8,9 +8,11 @@
             ID="RequiredFieldValidator1"
             runat="server"
             Display="Dynamic"
+            ValidationGroup="deactiveAcc"
             ControlToValidate="passwordDeactive"
             ErrorMessage="Required">
         </asp:RequiredFieldValidator>
     </div>
-    <asp:Button ID="deactiveAccount"  OnClick="deactiveAccount_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Deactive" />
+    <asp:Button ID="deactiveAccount" ValidationGroup="deactiveAcc"
+        OnClick="deactiveAccount_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Deactive" />
 </div>

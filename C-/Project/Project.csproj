@@ -62,6 +62,7 @@
     <Content Include="css\authenPageStyle.css" />
     <Content Include="css\error.css" />
     <Content Include="css\header.css" />
+    <Content Include="css\home.css" />
     <Content Include="css\productDetail.css" />
     <Content Include="css\profile.css" />
     <Content Include="css\setting.css" />

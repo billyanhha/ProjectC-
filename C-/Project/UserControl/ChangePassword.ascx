@@ -9,6 +9,7 @@
             ID="RequiredFieldValidator1"
             runat="server"
             Display="Dynamic"
+            ValidationGroup="changePw"
             ControlToValidate="oldPassword"
             ErrorMessage="Required">
         </asp:RequiredFieldValidator>
@@ -22,6 +23,7 @@
             ValidationExpression="^[a-zA-Z0-9]{7,}$"
             Display="Dynamic"
             runat="server"
+            ValidationGroup="changePw"
             CssClass="validate"
             ErrorMessage="Password must contain mother than 6 characters">
         </asp:RegularExpressionValidator>
@@ -34,10 +36,12 @@
             runat="server"
             ControlToValidate="confirmTxt"
             ControlToCompare="passwordTxt"
+            ValidationGroup="changePw"
             Display="Dynamic"
             CssClass="validate"
             ErrorMessage="No match">
         </asp:CompareValidator>
     </div>
-    <asp:Button ID="changePwBtn"  OnClick="changePwBtn_Click" runat="server" CssClass="btn btn-primary btn-sm changeBtn" Text="Submit change" />
+    <asp:Button ID="changePwBtn" ValidationGroup="changePw"
+        OnClick="changePwBtn_Click" runat="server" CssClass="btn btn-primary btn-sm changeBtn" Text="Submit change" />
 </div>

@@ -75,36 +75,48 @@ const uploadImage = () => {
 };
 
 const multiImage = () => {
-    //    load data
-    function readURL(input , callback) {
-        if (input.files && input.files[0]) {
-            let index = 0;
-            let arr = [...input.files];
 
-            for(let item of arr) {
+    let imageList = [];
+
+
+    //    load data
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            $(".preview-image").empty();
+
+            $(".preview-image").append("<i class=\"fas fa-minus-circle  preview-image-clear\"></i>")
+
+            let arr = [...input.files];
+            imageList = [...imageList, ...arr];
+
+            for (let i = 0 ; i < imageList.length ; i++) {
                 let reader = new FileReader();
                 reader.onload = function (e) {
-                    $(".preview-image").append("<div class=\"preview-image-item\ " + ++index + "\"></div>");
-                    $(`.${index}`).attr('style', `background-image: url('${e.target.result}');`);
+                    $(".preview-image").append("<div class=\"preview-image-item\" id = \"" + i + "\" style = \"background-image: url('" + e.target.result + "')\" ></div>");
                 };
-                reader.readAsDataURL(item);
-
+                reader.readAsDataURL(imageList[i]);
             }
 
-            callback();
+
 
         } else {
             $(".preview-image").empty();
         }
     }
 
+
     $(".multiFileUpload").change(function () {
-        readURL(this , ()=>            $(".preview-image").append("<i class=\"fas fa-minus-circle  preview-image-clear\"></i>"));
+        readURL(this);
+        this.files[0] = imageList;
+
         $(".preview-image-clear").on('click', () => {
-            console.log("sss");
             $(".multiFileUpload").replaceWith($(".multiFileUpload").val('').clone(true));
+            imageList = [];
             $(".preview-image").empty();
         });
     });
 };
+
+
+
 

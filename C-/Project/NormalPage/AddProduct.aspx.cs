@@ -16,6 +16,7 @@ namespace Project.NormalPage
         public int uid { get; set; }
         public int insertId { get; set; }
 
+    
         SqlConnection connection = null;
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
@@ -29,7 +30,6 @@ namespace Project.NormalPage
 
         private void redirect()
         {
-          
             if (checkAuthen())
             {
                 uid = (currentUser.ID);
@@ -52,7 +52,7 @@ namespace Project.NormalPage
             return false;
         }
 
-        
+
 
         protected void addProduct_Click(object sender, EventArgs e)
         {
@@ -81,10 +81,11 @@ namespace Project.NormalPage
         {
             try
             {
-                String query = "INSERT  INTO [dbo].[products]([product_name],[description],[ship_info], createdBy) OUTPUT INSERTED.[product_id] VALUES(@name , @des, @info , @uid)";
+                String query = "INSERT  INTO [dbo].[products]([product_name],[price] , [description],[ship_info], createdBy) OUTPUT INSERTED.[product_id] VALUES(@name , @price , @des, @info , @uid)";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@name", productName.Text));
+                command.Parameters.Add(new SqlParameter("@price", price.Text));
                 command.Parameters.Add(new SqlParameter("@des", productDes.Text));
                 command.Parameters.Add(new SqlParameter("@info", shipInfo.Text));
                 command.Parameters.Add(new SqlParameter("@uid", uid));
@@ -141,13 +142,13 @@ namespace Project.NormalPage
                     {
                         index++;
 
-                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id] , [index]) VALUES (@data" + index+ ", @type"+index+ " , @id" + index + " , @index" + index +  " ) \n";
+                        query += "INSERT INTO [dbo].[images] ([image_data] , [contentType] , [product_id] , [index]) VALUES (@data" + index + ", @type" + index + " , @id" + index + " , @index" + index + " ) \n";
 
                     }
 
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    int index1= 0;
+                    int index1 = 0;
                     foreach (HttpPostedFile uploadedFile in fileImages.PostedFiles)
                     {
                         index1++;
@@ -160,7 +161,7 @@ namespace Project.NormalPage
 
                         string mimeType = Path.GetExtension(uploadedFile.FileName);
 
-                        command.Parameters.Add(new SqlParameter("@data"+index1 , data));
+                        command.Parameters.Add(new SqlParameter("@data" + index1, data));
                         command.Parameters.Add(new SqlParameter("@type" + index1, mimeType));
                         command.Parameters.Add(new SqlParameter("@id" + index1, insertId));
                         command.Parameters.Add(new SqlParameter("@index" + index1, index1));
@@ -181,5 +182,6 @@ namespace Project.NormalPage
                 connection.Close();
             }
         }
+
     }
 }

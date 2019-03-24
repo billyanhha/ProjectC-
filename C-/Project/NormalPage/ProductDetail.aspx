@@ -57,11 +57,12 @@
                             <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#deleteModal">
                                 Delete product
                             </button>
-                            <asp:Button ID="switchBtn" OnClick ="switchBtn_Click" ValidateRequestMode ="Disabled"  class="btn dropdown-item" runat="server" Text="Switch status" />
+                            <asp:Button ID="switchBtn" OnClick="switchBtn_Click" ValidateRequestMode="Disabled" class="btn dropdown-item" runat="server" Text="Switch status" />
                         </div>
                     </div>
                 </div>
                 <p><span class="small-description">Category : </span><a runat="server" id="productCategory" href="#">Category</a></p>
+                <p >Price : <b runat="server" class="price-color" id="productPrice"></b></p>
                 <p class="normal-text">
                     <b runat="server" id="productView">15</b> views - 
                     <b class="primarycolor-text" runat="server" id="productOrder">0 </b>order
