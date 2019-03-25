@@ -75,6 +75,7 @@ namespace Project
             Session.Abandon();
             Response.Cookies["username"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["id"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["isAdmin"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/login");
         }
 

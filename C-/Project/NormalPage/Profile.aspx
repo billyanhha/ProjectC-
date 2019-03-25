@@ -91,10 +91,16 @@
     </div>
 
     <div class="home-layout">
+        <% if (getUserProductPerPage().Count == 0)
+            { %>
+        <center><h5>No product from this user</h5></center>
+        <%} %>
+        <%else
+            { %>
+        <h5>User post <span class="primary-text"> <%=getUserProductPerPage().Count %></span> products</h5>
         <div class="category-product">
-            <h4 class="category-name"><%=category %></h4>
             <div class="category-product-items">
-                <%foreach (ChocuModel.Product product in getProductByCategory())
+                <%foreach (ChocuModel.Product product in getUserProductPerPage())
                     { %>
                 <a target="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
                     <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')"></div>
@@ -105,6 +111,7 @@
             </div>
         </div>
         <center><%=generatePagination() %></center>
+        <%} %>
     </div>
 
 </asp:Content>
