@@ -15,6 +15,12 @@
     border-left: 3px solid #666;
 }
 
+.orderBtn{
+    color: #fff;
+    font-weight: bold;
+    min-width: 300px;
+}
+
 
 
 .category-item {

@@ -88,6 +88,7 @@
     <Content Include="NormalPage\ProductDetail.aspx" />
     <Content Include="NormalPage\Profile.aspx" />
     <Content Include="NormalPage\Setting.aspx" />
+    <Content Include="NormalPage\ViewOrder.aspx" />
     <Content Include="UserControl\ChangePassword.ascx" />
     <Content Include="UserControl\Deactive.ascx" />
     <Content Include="UserControl\DeletProduct.ascx" />
@@ -95,6 +96,7 @@
     <Content Include="UserControl\EditProfile.ascx" />
     <Content Include="UserControl\Loading.ascx" />
     <Content Include="UserControl\Message.ascx" />
+    <Content Include="UserControl\Order.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +187,13 @@
     <Compile Include="NormalPage\Setting.aspx.designer.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NormalPage\ViewOrder.aspx.cs">
+      <DependentUpon>ViewOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\ViewOrder.aspx.designer.cs">
+      <DependentUpon>ViewOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pagination\BaseWebComponent.cs" />
     <Compile Include="Pagination\Pagger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,6 +253,13 @@
     </Compile>
     <Compile Include="UserControl\Message.ascx.designer.cs">
       <DependentUpon>Message.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Order.ascx.cs">
+      <DependentUpon>Order.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\Order.ascx.designer.cs">
+      <DependentUpon>Order.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

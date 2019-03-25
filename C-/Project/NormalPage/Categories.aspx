@@ -21,7 +21,7 @@
             <div class="category-product-items">
                 <%foreach (ChocuModel.Product product in getProductByCategory())
                     { %>
-                <a href="/product/detail/<%=product.id%>" class="category-product-item">
+                <a target ="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
                     <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')"></div>
                     <p><b><%=product.productName %></b></p>
                     <p>Price : <b class="primary"><%=product.price %></b> </p>

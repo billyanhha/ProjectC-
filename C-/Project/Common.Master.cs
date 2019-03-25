@@ -51,7 +51,7 @@ namespace Project
             {
                 username.InnerHtml = "Login";
                 dropdownMenuButton.Attributes["data-toggle"] = "";
-                dropdownMenuButton.Attributes["href"] = "/login";
+                dropdownMenuButton.Attributes["href"] = "/login?fallbackUrl=" + Page.Request.Url.ToString();
             }
         }
 

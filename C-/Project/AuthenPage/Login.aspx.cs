@@ -67,7 +67,7 @@ namespace Project
 
                         //set cookie
                         setCookie(user.ID , user.Username);
-                        Response.Redirect("/home");
+                        Response.Redirect(getRedirectUrl());
                     }
                 }
             }
@@ -79,6 +79,17 @@ namespace Project
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "removeAttr", "$('.loginBtn').removeAttr('disabled');", true);
                 connection.Close();
+            }
+        }
+
+        private string getRedirectUrl()
+        {
+            if(string.IsNullOrEmpty(Request.QueryString["fallbackUrl"]))
+            {
+                return "/home";
+            } else
+            {
+                return Request.QueryString["fallbackUrl"];
             }
         }
 

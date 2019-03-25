@@ -18,7 +18,7 @@ namespace Project.NormalPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            getProductId();
+            orderModalPage.productIdList = getProductId();
         }
 
         public List<String> getProductId()
@@ -79,6 +79,25 @@ namespace Project.NormalPage
 
             return null;
 
+        }
+
+        protected void orderBtn_Click(object sender, EventArgs e)
+        {
+            if(!checkAuthen()){
+                orderBtn.Attributes["data-toggle"] = "";
+                Response.Redirect("/login?fallbackUrl=/cart");
+            }
+        }
+
+        private bool checkAuthen()
+        {
+
+            if (Session["authenUser"] != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

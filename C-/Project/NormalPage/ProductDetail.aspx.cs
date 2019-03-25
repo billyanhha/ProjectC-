@@ -47,10 +47,10 @@ namespace Project.NormalPage
 
         private void loadItem()
         {
+            order.Attributes["style"] = "display: block";
             if (Session["authenUser"] != null)
             {
                 // add order button for login user
-                order.Attributes["style"] = "display: block";
 
                 User user = Session["authenUser"] as User;
 

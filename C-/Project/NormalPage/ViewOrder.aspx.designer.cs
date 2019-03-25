@@ -10,24 +10,24 @@
 namespace Project.NormalPage {
     
     
-    public partial class Cart {
+    public partial class ViewOrder {
         
         /// <summary>
-        /// orderModalPage control.
+        /// noOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Project.UserControl.Order orderModalPage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noOrder;
         
         /// <summary>
-        /// orderBtn control.
+        /// OrderList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button orderBtn;
+        protected global::System.Web.UI.WebControls.GridView OrderList;
     }
 }
