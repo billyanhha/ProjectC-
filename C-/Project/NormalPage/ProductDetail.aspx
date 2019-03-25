@@ -57,7 +57,12 @@
                             <button type="button" class="btn dropdown-item" data-toggle="modal" data-target="#deleteModal">
                                 Delete product
                             </button>
-                            <asp:Button ID="switchBtn" OnClick="switchBtn_Click" ValidateRequestMode="Disabled" class="btn dropdown-item" runat="server" Text="Switch status" />
+                            <a target ="blank" class="dropdown-item" href="/order/product/<%=id %>" >View order</a>
+                            <asp:Button
+                                 ID="switchBtn" 
+                                OnClick="switchBtn_Click" 
+                                UseSubmitBehavior ="false"
+                                ValidateRequestMode="Disabled" class="btn dropdown-item" runat="server" Text="Switch status" />
                         </div>
                     </div>
                 </div>

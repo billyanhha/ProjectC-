@@ -99,7 +99,10 @@
             </div>
         </div>
         <asp:Button runat="server" ValidationGroup="add"
-            OnClick="addProduct_Click" ID="addProduct" CssClass="btn btn-primary btn-block addProductBtn" Text="Add product" />
+            OnClick="addProduct_Click" ID="addProduct"
+            UseSubmitBehavior ="false"
+             CssClass="btn btn-primary btn-block addProductBtn"
+             Text="Add product" />
     </div>
 
 

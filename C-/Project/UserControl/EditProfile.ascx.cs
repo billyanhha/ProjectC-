@@ -45,16 +45,16 @@ namespace Project.UserControl
                 {
                     string fn = (!string.IsNullOrEmpty(reader["fullname"].ToString())) ?
                            reader["fullname"].ToString() : ("Add your fullname");
-                    fullname.Attributes["placeholder"] = fn;
+                    fullname.Text = fn;
 
 
-                    des.Attributes["placeholder"] = (!string.IsNullOrEmpty(reader["description"].ToString())) ?
+                    des.Text = (!string.IsNullOrEmpty(reader["description"].ToString())) ?
                         reader["description"].ToString() : ("Add something about you");
 
-                    phoneTxt.Attributes["placeholder"] = (!string.IsNullOrEmpty(reader["phoneNumber"].ToString())) ?
+                    phoneTxt.Text= (!string.IsNullOrEmpty(reader["phoneNumber"].ToString())) ?
                         reader["phoneNumber"].ToString() : ("Add your phone");
 
-                    addressTxt.Attributes["placeholder"] = (!string.IsNullOrEmpty(reader["address"].ToString())) ?
+                    addressTxt.Text = (!string.IsNullOrEmpty(reader["address"].ToString())) ?
                         reader["address"].ToString() : ("Add your address");
                 }
 

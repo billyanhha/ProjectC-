@@ -28,7 +28,7 @@
                 runat="server"
                 ID="orderBtn" OnClick="orderBtn_Click"
                 UseSubmitBehavior="false"
-                ValidationGroup="-1"
+                ValidationGroup="cart"
                 OnClientClick="return false;"
                 CssClass="btn btn-warning btn-group-lg orderBtn"
                 data-toggle="modal" data-target="#orderModal"

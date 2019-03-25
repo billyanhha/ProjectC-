@@ -4,6 +4,7 @@
     <div class="form-group">
         <label for="exampleInputEmail1">Fullname</label>
         <asp:TextBox ID="fullname" runat="server" CssClass="form-control fullname" placeholder="Enter name"></asp:TextBox>
+        <asp:RequiredFieldValidator ValidationGroup="editProfile" ControlToValidate="fullname" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">About your self</label>
@@ -14,6 +15,7 @@
             CssClass="form-control aboutme"
             placeholder="Tell about urself">
         </asp:TextBox>
+        <asp:RequiredFieldValidator ValidationGroup="editProfile" ControlToValidate="des" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Phone number</label>
@@ -22,11 +24,16 @@
             type="number"
             CssClass="form-control phonenum" placeholder="Enter phonenumber"></asp:TextBox>
     </div>
+    <asp:RequiredFieldValidator ValidationGroup="editProfile" ControlToValidate="phoneTxt" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
     <div class="form-group">
         <label for="exampleInputEmail1">Address</label>
         <asp:TextBox ID="addressTxt"
             runat="server"
             CssClass="form-control addressC" placeholder="Enter address"></asp:TextBox>
+        <asp:RequiredFieldValidator ValidationGroup="editProfile" ControlToValidate="addressTxt" ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
     </div>
-    <asp:Button runat="server"  OnClick ="edit" ID="EditSubmitBtn" CssClass="btn btn-primary btn-sm editBtn"  Text="Submit edit" />
+    <asp:Button runat="server"
+        UseSubmitBehavior="false"
+        ValidationGroup="editProfile"
+        OnClick="edit" ID="EditSubmitBtn" CssClass="btn btn-primary btn-sm" Text="Submit edit" />
 </div>

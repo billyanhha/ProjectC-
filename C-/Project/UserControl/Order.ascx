@@ -67,7 +67,11 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <asp:Button runat="server" ValidationGroup="addOrder" UseSubmitBehavior="false" ID="submitOrder" OnClick="submitOrder_Click" class="btn btn-primary addOrderBtn" Text="Submit order" />
+                <asp:Button runat="server" ValidationGroup="addOrder" 
+                    UseSubmitBehavior="false" ID="submitOrder" 
+                    OnClick="submitOrder_Click"
+                     class="btn btn-primary addOrderBtn"
+                     Text="Submit order" />
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 

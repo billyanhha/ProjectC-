@@ -84,9 +84,13 @@
     <Content Include="NormalPage\ErrorPage.aspx" />
     <Content Include="NormalPage\Home.aspx" />
     <Content Include="NormalPage\Image.aspx" />
+    <Content Include="NormalPage\Manage.aspx" />
+    <Content Include="NormalPage\ManageProduct.aspx" />
     <Content Include="NormalPage\PageImage.aspx" />
     <Content Include="NormalPage\ProductDetail.aspx" />
+    <Content Include="NormalPage\ProductOrder.aspx" />
     <Content Include="NormalPage\Profile.aspx" />
+    <Content Include="NormalPage\Search.aspx" />
     <Content Include="NormalPage\Setting.aspx" />
     <Content Include="NormalPage\ViewOrder.aspx" />
     <Content Include="UserControl\ChangePassword.ascx" />
@@ -159,6 +163,20 @@
     <Compile Include="NormalPage\Image.aspx.designer.cs">
       <DependentUpon>Image.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NormalPage\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\ManageProduct.aspx.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\ManageProduct.aspx.designer.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NormalPage\PageImage.aspx.cs">
       <DependentUpon>PageImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -173,12 +191,26 @@
     <Compile Include="NormalPage\ProductDetail.aspx.designer.cs">
       <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NormalPage\ProductOrder.aspx.cs">
+      <DependentUpon>ProductOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\ProductOrder.aspx.designer.cs">
+      <DependentUpon>ProductOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NormalPage\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NormalPage\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="NormalPage\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>

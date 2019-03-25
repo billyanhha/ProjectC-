@@ -17,45 +17,9 @@ $(document).ready(() => {
 
 const loadingResources = () => {
     uploadImage();
-    editProfile();
     multiImage();
 };
 
-const editProfile = () => {
-    $('.editBtn').attr("disabled", "");
-
-    $('.fullname').keyup(() => {
-        if ($('.fullname').val().replace(/\s/g, '')) {
-            $('.editBtn').removeAttr("disabled");
-        } else {
-            $('.editBtn').attr("disabled", "");
-        }
-    });
-
-    $('.phonenum').keyup(() => {
-        if ($('.phonenum').val().replace(/\s/g, '')) {
-            $('.editBtn').removeAttr("disabled");
-        } else {
-            $('.editBtn').attr("disabled", "");
-        }
-    });
-
-    $('.aboutme').keyup(() => {
-        if ($('.aboutme').val().replace(/\s/g, '')) {
-            $('.editBtn').removeAttr("disabled");
-        } else {
-            $('.editBtn').attr("disabled", "");
-        }
-    });
-
-    $('.addressC').keyup(() => {
-        if ($('.addressC').val().replace(/\s/g, '')) {
-            $('.editBtn').removeAttr("disabled");
-        } else {
-            $('.editBtn').attr("disabled", "");
-        }
-    });
-}
 
 
 

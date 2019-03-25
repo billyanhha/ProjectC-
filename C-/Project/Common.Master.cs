@@ -16,6 +16,10 @@ namespace Project
         {
             getUser();
             cartnNumber.InnerHtml = getNumberOfCart() + "";
+            if(!string.IsNullOrEmpty(Request.QueryString["queryString"]))
+            {
+                searchField.Text = Request.QueryString["queryString"];
+            }
         }
 
         public int getNumberOfCart()
@@ -46,6 +50,15 @@ namespace Project
                 //href link to profile at navbar
                 toProfile.Attributes["href"] = "/user/detail/" + user.ID;
                 avatar.Attributes["style"] = "background-image: url(" + url + ")";
+                if (user.isAdmin)
+                {
+                    noAdmin1.Visible = false;
+                    noAdmin2.Visible = false;
+                    noAdmin4.Visible = false;
+                    noAdmin5.Visible = false;
+                    noAdmin3.InnerHtml = "Manage users and products";
+                    noAdmin3.Attributes["href"] = "/admin/manage";
+                }
             }
             else
             {
@@ -65,5 +78,12 @@ namespace Project
             Response.Redirect("/login");
         }
 
+        protected void hiddenSearchBtn_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(searchField.Text))
+            {
+                Response.Redirect("/search?queryString=" + searchField.Text);
+            }
+        }
     }
 }

@@ -25,7 +25,6 @@ namespace Project
             {
                 Response.Redirect("/home");
             }
-
         }
 
         protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
@@ -39,7 +38,7 @@ namespace Project
             SqlConnection connection = new SqlConnection(connStr);
             try
             {
-                String query = "Select username , id, active from users where username = @username and password = @password";
+                String query = "Select username , id, active, isAdmin from users where username = @username and password = @password and ban = 0";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.Add(new SqlParameter("@username" , usernameTxt.Text));
                 cmd.Parameters.Add(new SqlParameter("@password", passwordTxt.Text));
@@ -58,6 +57,7 @@ namespace Project
                         User user = new User();
                         user.ID = int.Parse(dr["id"].ToString());
                         user.Username = dr["username"].ToString();
+                        user.isAdmin = Convert.ToBoolean(dr["isAdmin"].ToString());
                         Session["authenUser"] = user;
 
                         if (dr["active"].ToString() == "False")
@@ -66,7 +66,7 @@ namespace Project
                         }
 
                         //set cookie
-                        setCookie(user.ID , user.Username);
+                        setCookie(user.ID , user.Username , user.isAdmin);
                         Response.Redirect(getRedirectUrl());
                     }
                 }
@@ -119,7 +119,7 @@ namespace Project
         }
 
 
-        private void setCookie(int id , string username)
+        private void setCookie(int id , string username, bool isAdmin)
         {
             if(rembemberCb.Checked)
             {
@@ -132,8 +132,13 @@ namespace Project
                 HttpCookie un = new HttpCookie("username");
                 un.Value = username;
                 un.Expires = DateTime.Now.AddDays(30);
-
                 Response.Cookies.Add(un);
+
+
+                HttpCookie author = new HttpCookie("isAdmin");
+                author.Value = isAdmin + "";
+                author.Expires = DateTime.Now.AddDays(30);
+                Response.Cookies.Add(author);
             }
         }
 

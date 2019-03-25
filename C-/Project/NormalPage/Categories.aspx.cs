@@ -177,7 +177,7 @@ namespace Project.NormalPage
                     return "";
                 }
 
-                return Pagination.Pagger.generate(pageIndex, gap, maxPage, "/category/" + id + "/" + category);
+                return Pagination.Pagger.generate(pageIndex, gap, maxPage, "/category/" + id + "/" + category , true);
             }
             catch (Exception)
             {

@@ -42,6 +42,8 @@
             ErrorMessage="No match">
         </asp:CompareValidator>
     </div>
-    <asp:Button ID="changePwBtn" ValidationGroup="changePw"
+    <asp:Button ID="changePwBtn"
+         ValidationGroup="changePw"
+        UseSubmitBehavior ="false"
         OnClick="changePwBtn_Click" runat="server" CssClass="btn btn-primary btn-sm changeBtn" Text="Submit change" />
 </div>

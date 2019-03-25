@@ -16,7 +16,14 @@ namespace Project
             routes.MapPageRoute("Default", "", "~/NormalPage/Home.aspx" , true);
             routes.MapPageRoute("Home", "home", "~/NormalPage/Home.aspx" , true);
             routes.MapPageRoute("Category", "category/{id}/{name}", "~/NormalPage/Categories.aspx", true);
+            routes.MapPageRoute("Search", "search", "~/NormalPage/Search.aspx", true);
 
+            //admin
+            routes.MapPageRoute("AdminManage", "admin/manage", "~/NormalPage/Manage.aspx", true);
+
+            //manage
+            routes.MapPageRoute("ManageProduct", "user/product", "~/NormalPage/ManageProduct.aspx", true);
+            routes.MapPageRoute("ProductOrder", "order/product/{id}", "~/NormalPage/ProductOrder.aspx", true);
 
             //order
             routes.MapPageRoute("Cart", "cart", "~/NormalPage/Cart.aspx", true);

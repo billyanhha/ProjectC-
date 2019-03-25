@@ -18,6 +18,8 @@ namespace Project.NormalPage
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
+        private const int pageSize = 30;
+
         public int id { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -246,5 +248,140 @@ namespace Project.NormalPage
                 connection.Close();
             }
         }
+
+
+        public List<Product> getUserProductPerPage()
+        {
+            SqlConnection connection = new SqlConnection(connStr);
+            try
+            {
+
+                string page = "";
+                if (string.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    page = "1";
+                }
+                else
+                {
+                    page = Request.QueryString["page"];
+                }
+                int pageIndex = int.Parse(page);
+
+                int pageStartIndex = pageSize * (pageIndex - 1) + 1;
+                int pageEndIndex = pageSize * (pageIndex);
+
+                List<Product> products = new List<Product>();
+
+                string query = @"Select * from (
+
+                        Select ROW_NUMBER() over (order by products.viewNumber desc) as rn ,
+                        [product_id]
+                              ,[product_name]
+                              ,[price]
+                          FROM [dbo].[products]
+                          where createdBy = " + id +
+                          @") as x
+                                 Where rn between @start and @end
+                             ";
+
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                command.Parameters.Add(new SqlParameter("@start", pageStartIndex));
+                command.Parameters.Add(new SqlParameter("@end", pageEndIndex));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Product product = new Product();
+                    product.id = reader["product_id"].ToString();
+                    product.productName = reader["product_name"].ToString();
+                    product.price = Convert.ToDouble(reader["price"].ToString());
+                    products.Add(product);
+                }
+
+                return products;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        public string generatePagination()
+        {
+            try
+            {
+                string page = "";
+                if (string.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    page = "1";
+                }
+                else
+                {
+                    page = Request.QueryString["page"];
+                }
+                int pageIndex = int.Parse(page);
+
+                int gap = 2;
+                int totalPage = getTotalUserProduct();
+                int maxPage = totalPage / pageSize + (totalPage % pageSize == 0 ? 0 : 1);
+
+                if (maxPage == 1)
+                {
+                    return "";
+                }
+
+                return Pagination.Pagger.generate(pageIndex, gap, maxPage, "/user/detail", false);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+
+        public int getTotalUserProduct()
+        {
+            SqlConnection connection = new SqlConnection(connStr);
+            try
+            {
+                string query = @"SELECT Count([products].product_id) as total
+                      FROM [dbo].[products] where createdBy =  " + id;
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    return int.Parse(reader["total"].ToString());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return 0;
+        }
+
+
     }
 }

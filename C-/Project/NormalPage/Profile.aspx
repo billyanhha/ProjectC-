@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="Project.NormalPage.Profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-
+    <link rel="stylesheet" type="text/css" href="/css/homeCategory.css" />
     <div class="page-layout">
         <div class="modal fade" id="changeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -78,13 +78,33 @@
                 <p class="profile-info-item-detail">*** <b runat="server" class="wrap" id="description"></b></p>
                 <div runat="server" id="rateDiv">
                     <div class="rate">
-                        <asp:TextBox runat="server" CssClass="form-control" ViewStateMode ="Disabled" ID ="score" type="number" max="5" min="1" />
-                        <asp:Button ID="rateBtn" OnClick ="rateBtn_Click" runat="server" CssClass="btn btn-primary" Text="Rate" />
+                        <asp:TextBox runat="server" CssClass="form-control" ViewStateMode="Disabled" ID="score" type="number" max="5" min="1" />
+                        <asp:Button
+                            ID="rateBtn"
+                            UseSubmitBehavior="false"
+                            OnClick="rateBtn_Click" runat="server" CssClass="btn btn-primary" Text="Rate" />
                     </div>
                     <p class="small-description">* Rate user score from 1 to 5</p>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="home-layout">
+        <div class="category-product">
+            <h4 class="category-name"><%=category %></h4>
+            <div class="category-product-items">
+                <%foreach (ChocuModel.Product product in getProductByCategory())
+                    { %>
+                <a target="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
+                    <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')"></div>
+                    <p><b><%=product.productName %></b></p>
+                    <p>Price : <b class="primary"><%=product.price %></b> </p>
+                </a>
+                <% } %>
+            </div>
+        </div>
+        <center><%=generatePagination() %></center>
     </div>
 
 </asp:Content>

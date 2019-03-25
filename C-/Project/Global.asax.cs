@@ -29,13 +29,16 @@ namespace Project
         {
             HttpCookie uid = Request.Cookies["id"];
             HttpCookie un = Request.Cookies["username"];
-            if (Session["authenUser"] == null && uid != null && un != null)
+            HttpCookie author = Request.Cookies["isAdmin"];
+            if (Session["authenUser"] == null && uid != null && un != null && author != null)
             {
                 string id = uid.Value;
                 string us = un.Value;
+                string au = author.Value;
                 User user = new User();
                 user.ID = int.Parse(id);
                 user.Username = us;
+                user.isAdmin = Convert.ToBoolean(au);
                 Session["authenUser"] = user;
             }
         }

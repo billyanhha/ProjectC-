@@ -26,7 +26,15 @@
                 <!-- Brand -->
                 <a class="navLink store-name" href="/home">Chocu</a>
                 <div class="nav-input">
-                    <asp:TextBox ID="search" ValidationGroup="search" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:Button ID="hiddenSearchBtn"
+                        ValidationGroup="search" 
+                        CausesValidation ="false"
+                        runat="server" Style="display: none" 
+                        OnClick="hiddenSearchBtn_Click" />
+                    <asp:TextBox ID="searchField"
+                         runat="server"
+                         ValidationGroup="search"
+                         CssClass="form-control"></asp:TextBox>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <i class="fas fa-list-ul list" style="color: #189eff"></i>
@@ -36,7 +44,7 @@
                         <i class="fas fa-bell icon"></i>
                         <p>Notification</p>
                     </a>
-                    <a class="navLink navbar-right-item " href="#">
+                    <a runat="server" id="noAdmin4" class="navLink navbar-right-item " href="#">
                         <i class="fas fa-eye icon"></i>
                         <p>Watched product</p>
                     </a>
@@ -57,12 +65,13 @@
                         <div runat="server" id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a id="toProfile" runat="server" class="dropdown-item" href="#">View Profile</a>
                             <a class="dropdown-item" href="/user/setting">Account Setting</a>
-                            <a class="dropdown-item" href="/product/add">Add product</a>
-                            <a class="dropdown-item" href="/order">View your order</a>
+                            <a id="noAdmin1" runat="server" class="dropdown-item" href="/product/add">Add product</a>
+                            <a id="noAdmin5" runat="server" class="dropdown-item" href="/user/product">Manage product</a>
+                            <a id="noAdmin2" runat="server" class="dropdown-item" href="/order">View your order</a>
                             <asp:Button UseSubmitBehavior="false" CausesValidation="false" CssClass="dropdown-item" OnClick="logout" ID="Button1" runat="server" Text="Logout" />
                         </div>
                     </div>
-                    <a class="navLink navbar-right-item cart" href="/cart">
+                    <a runat="server" id="noAdmin3" class="navLink navbar-right-item cart" href="/cart">
                         <i class="fas fa-cart-plus icon"></i>
                         <p>Your cart</p>
                         <div class="cart-number" runat="server" id="cartnNumber">

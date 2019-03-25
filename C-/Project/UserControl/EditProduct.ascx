@@ -21,7 +21,7 @@
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator1"
-                        ValidationGroup="edit"
+                        ValidationGroup="editProduct"
                         ControlToValidate="productName"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
@@ -40,7 +40,7 @@
                         ID="RequiredFieldValidator5"
                         ControlToValidate="price"
                         Display="Dynamic"
-                        ValidationGroup="edit"
+                        ValidationGroup="editProduct"
                         runat="server" ErrorMessage="Required">
                     </asp:RequiredFieldValidator>
                 </div>
@@ -56,7 +56,7 @@
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator2"
                         ControlToValidate="productDes"
-                        ValidationGroup="edit"
+                        ValidationGroup="editProduct"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
                     </asp:RequiredFieldValidator>
@@ -73,7 +73,7 @@
                     <asp:RequiredFieldValidator
                         ID="RequiredFieldValidator3"
                         ControlToValidate="shipInfo"
-                        ValidationGroup="edit"
+                        ValidationGroup="editProduct"
                         Display="Dynamic"
                         runat="server" ErrorMessage="Required">
                     </asp:RequiredFieldValidator>
@@ -101,14 +101,17 @@
                             ID="RequiredFieldValidator4"
                             ControlToValidate="fileImages"
                             Display="Dynamic"
-                            ValidationGroup="edit"
+                            ValidationGroup="editProduct"
                             runat="server"
                             ErrorMessage="You have to prodive images as evidence">
                         </asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <asp:Button ValidationGroup="edit" runat="server" ID="editProductBtn" CssClass="btn btn-primary btn-block addProductBtn" Text="Edit product" OnClick="editProductBtn_Click" UseSubmitBehavior="False" />
-
+                <asp:Button ValidationGroup="editProduct" 
+                    runat="server" ID="editProductBtn" 
+                    CssClass="btn btn-primary btn-block addProductBtn" 
+                    Text="Edit product" OnClick="editProductBtn_Click" 
+                    UseSubmitBehavior="false" />
             </div>
 
 
