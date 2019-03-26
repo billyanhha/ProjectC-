@@ -43,19 +43,14 @@ namespace Project.UserControl
                 // check if user available or not
                 while (reader.Read())
                 {
-                    string fn = (!string.IsNullOrEmpty(reader["fullname"].ToString())) ?
-                           reader["fullname"].ToString() : ("Add your fullname");
+                    string fn = reader["fullname"].ToString();
                     fullname.Text = fn;
 
+                    des.Text = reader["description"].ToString();
 
-                    des.Text = (!string.IsNullOrEmpty(reader["description"].ToString())) ?
-                        reader["description"].ToString() : ("Add something about you");
+                    phoneTxt.Text=  reader["phoneNumber"].ToString();
 
-                    phoneTxt.Text= (!string.IsNullOrEmpty(reader["phoneNumber"].ToString())) ?
-                        reader["phoneNumber"].ToString() : ("Add your phone");
-
-                    addressTxt.Text = (!string.IsNullOrEmpty(reader["address"].ToString())) ?
-                        reader["address"].ToString() : ("Add your address");
+                    addressTxt.Text = reader["address"].ToString();
                 }
 
             }

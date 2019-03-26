@@ -11,7 +11,7 @@
 
             <% foreach (ChocuModel.Category item in categories)
                 { %>
-            <a href ="/category/<%=item.ID%>/<%=item.CategoryName%>"  class="category-item">
+            <a href="/category/<%=item.ID%>/<%=item.CategoryName%>" class="category-item">
                 <%=item.CategoryName %>
             </a>
             <%} %>
@@ -25,18 +25,17 @@
             <div class="category-product-items">
                 <%foreach (ChocuModel.Product product in getProductByCategory(item.ID))
                     { %>
-                <a target ="_blank" href ="/product/detail/<%=product.id%>" class="category-product-item">
-                    <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')" ></div>
+                <a target="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
+                    <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')"></div>
                     <p><b class="product-name"><%=product.productName %></b></p>
-                    <p>Price : <b class="primarycolor-text"><%=product.price %></b> </p>
+                    <p>Price : <b class="primarycolor-text"><%=double.Parse(product.price + "").ToString("#,###", cul.NumberFormat)%> vnd</b> </p>
                 </a>
                 <% } %>
             </div>
             <div>
-                <a href ="/category/<%=item.ID%>/<%=item.CategoryName%>"class ="small">View full category</a>
+                <a href="/category/<%=item.ID%>/<%=item.CategoryName%>" class="small">View full category</a>
             </div>
         </div>
         <%} %>
-
     </div>
 </asp:Content>

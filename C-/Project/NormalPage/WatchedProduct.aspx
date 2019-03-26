@@ -1,15 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="Project.NormalPage.Cart" %>
-
-<%@ Register TagPrefix="UC" TagName="Order" Src="~/UserControl/Order.ascx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="WatchedProduct.aspx.cs" Inherits="Project.NormalPage.WatchedProduct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
 
-    <%-- css --%>
+      <%-- css --%>
     <link rel="stylesheet" type="text/css" href="/css/homeCategory.css" />
     <%--  --%>
 
     <div class="home-layout">
-        <UC:Order ID="orderModalPage" runat="server" />
         <div class="category-product">
             <%if (getProductId() != null)
                 {%>
@@ -24,7 +21,6 @@
                 </a>
                 <%}%>
             </div>
-            <a runat="server" id="Order" href ="#" data-toggle="" data-target="#orderModal"  class ="btn btn-warning btn-group-lg orderBtn" >Order</a>
             <% } %>
             <%else
                 { %>
@@ -32,6 +28,5 @@
             <% } %>
         </div>
     </div>
-
 
 </asp:Content>

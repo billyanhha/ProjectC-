@@ -18,16 +18,24 @@
         </div>
         <div class="category-product">
             <h4 class="category-name"><%=category %></h4>
+            <%if (getProductByCategory().Count == 0)
+                { %>
+            <br /><br />
+            <h5>No product</h5>
+            <% } %>
+            <%else
+                { %>
             <div class="category-product-items">
                 <%foreach (ChocuModel.Product product in getProductByCategory())
                     { %>
-                <a target ="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
+                <a target="_blank" href="/product/detail/<%=product.id%>" class="category-product-item">
                     <div class="category-product-item-image" style="background-image: url('/image?pid=<%=product.id%>&imageId=1')"></div>
                     <p><b><%=product.productName %></b></p>
-                    <p>Price : <b class="primary"><%=product.price %></b> </p>
+                    <p>Price : <b class="primarycolor-text"><%=double.Parse(product.price + "").ToString("#,###", cul.NumberFormat)%> vnd</b> </p>
                 </a>
                 <% } %>
             </div>
+            <%} %>
         </div>
         <center><%=generatePagination() %></center>
     </div>

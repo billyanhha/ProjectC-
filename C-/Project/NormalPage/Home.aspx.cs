@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ChocuModel;
 using System.Web.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Project.NormalPage
 {
@@ -14,7 +15,7 @@ namespace Project.NormalPage
     {
 
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
-
+        public CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
         public List<Category> categories;
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -10,18 +10,6 @@
 namespace Project.NormalPage {
     
     
-    public partial class Search {
-        
-        /// <summary>
-        /// Master property.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated property.
-        /// </remarks>
-        public new Project.Common Master {
-            get {
-                return ((Project.Common)(base.Master));
-            }
-        }
+    public partial class WatchedProduct {
     }
 }

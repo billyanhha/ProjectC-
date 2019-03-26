@@ -238,6 +238,7 @@ namespace Project.NormalPage
                 command.Parameters.Add(new SqlParameter("@rate", rateScore + int.Parse(score.Text)));
                 command.ExecuteNonQuery();
                 score.Text = "";
+                Page.Response.Redirect(Page.Request.Url.ToString(), true);
             }
             catch (Exception ex)
             {

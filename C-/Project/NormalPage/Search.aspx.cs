@@ -20,7 +20,8 @@ namespace Project.NormalPage
         protected void Page_Load(object sender, EventArgs e)
         {
             textSearch = Request.QueryString["queryString"];
-            if(string.IsNullOrEmpty(Request.QueryString["queryString"]))
+            this.Master.searchTxt = textSearch;
+            if (string.IsNullOrEmpty(Request.QueryString["queryString"]))
             {
                 Response.Redirect("/home");
             }

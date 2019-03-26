@@ -27,6 +27,7 @@ namespace Project
 
             //order
             routes.MapPageRoute("Cart", "cart", "~/NormalPage/Cart.aspx", true);
+            routes.MapPageRoute("WatchedProduct", "watched", "~/NormalPage/WatchedProduct.aspx", true);
             routes.MapPageRoute("OrderView", "order", "~/NormalPage/ViewOrder.aspx", true);
 
 

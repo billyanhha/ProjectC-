@@ -11,14 +11,15 @@ namespace Project
     public partial class Common : System.Web.UI.MasterPage
     {
 
+        public string searchTxt { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             getUser();
             cartnNumber.InnerHtml = getNumberOfCart() + "";
-            if(!string.IsNullOrEmpty(Request.QueryString["queryString"]))
+            if(!string.IsNullOrEmpty(searchTxt) && !IsPostBack)
             {
-                searchField.Text = Request.QueryString["queryString"];
+                searchField.Text = searchTxt;
             }
         }
 
@@ -64,7 +65,8 @@ namespace Project
             {
                 username.InnerHtml = "Login";
                 dropdownMenuButton.Attributes["data-toggle"] = "";
-                dropdownMenuButton.Attributes["href"] = "/login?fallbackUrl=" + Page.Request.Url.ToString();
+                string fallbackUrl = Page.Request.Url.ToString().Contains("error") ? "/home" : Page.Request.Url.ToString();
+                dropdownMenuButton.Attributes["href"] = "/login?fallbackUrl=" + fallbackUrl;
             }
         }
 

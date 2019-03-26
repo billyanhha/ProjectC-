@@ -93,6 +93,7 @@
     <Content Include="NormalPage\Search.aspx" />
     <Content Include="NormalPage\Setting.aspx" />
     <Content Include="NormalPage\ViewOrder.aspx" />
+    <Content Include="NormalPage\WatchedProduct.aspx" />
     <Content Include="UserControl\ChangePassword.ascx" />
     <Content Include="UserControl\Deactive.ascx" />
     <Content Include="UserControl\DeletProduct.ascx" />
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="NormalPage\ViewOrder.aspx.designer.cs">
       <DependentUpon>ViewOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalPage\WatchedProduct.aspx.cs">
+      <DependentUpon>WatchedProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NormalPage\WatchedProduct.aspx.designer.cs">
+      <DependentUpon>WatchedProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagination\BaseWebComponent.cs" />
     <Compile Include="Pagination\Pagger.cs" />

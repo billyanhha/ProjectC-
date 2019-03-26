@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ChocuModel;
 using System.Web.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Project.NormalPage
 {
@@ -16,6 +17,8 @@ namespace Project.NormalPage
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
         private Product product;
         public string id;
+        public CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+
         private string createdBy;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -133,7 +136,7 @@ namespace Project.NormalPage
 
                         //price 
                         string price = rd["price"].ToString();
-                        productPrice.InnerHtml = price;
+                        productPrice.InnerHtml = double.Parse(price).ToString("#,###", cul.NumberFormat) + " vnd";
 
                         // view
                         string view = rd["viewNumber"].ToString();

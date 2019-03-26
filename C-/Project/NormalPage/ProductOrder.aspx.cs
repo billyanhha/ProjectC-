@@ -28,7 +28,7 @@ namespace Project.NormalPage
             {
                 String query = @"SELECT Count([order_id]) as total
                   FROM[dbo].[orders_products]
-                  where[product_id] = 45";
+                  where [product_id] = " + id;
                 SqlCommand command = new SqlCommand(query, connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();

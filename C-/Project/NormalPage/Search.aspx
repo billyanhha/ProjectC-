@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="Project.NormalPage.Search" %>
+<%@ MasterType VirtualPath="~/Common.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <%-- css --%>
@@ -6,7 +7,7 @@
     <%--  --%>
 
     <div class="home-layout">
-        <h5>Search result for " <span class="primary-text"><%=Request.QueryString["queryString"]%></span> "</h5>
+        <h5>Search result for "<span class="primary-text"><%=Request.QueryString["queryString"]%></span>"</h5>
 
         <div class="category-product">
             <div class="category-product-items">

@@ -4,30 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ChocuModel;
 using System.Web.Configuration;
 using System.Data.SqlClient;
-using ChocuModel;
-
 
 namespace Project.NormalPage
 {
-    public partial class Cart : System.Web.UI.Page
+    public partial class WatchedProduct : System.Web.UI.Page
     {
-
         private string connStr = WebConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            orderModalPage.productIdList = getProductId();
-            if (!checkAuthen())
-            {
-                Order.Attributes["data-toggle"] = "";
-                Order.Attributes["href"] = ("/login?fallbackUrl=/cart");
-            }
-            else
-            {
-                Order.Attributes["data-toggle"] = "modal";
-            }
         }
 
         public List<String> getProductId()
@@ -88,18 +76,6 @@ namespace Project.NormalPage
 
             return null;
 
-        }
-
-
-        private bool checkAuthen()
-        {
-
-            if (Session["authenUser"] != null)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

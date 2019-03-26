@@ -78,11 +78,16 @@
                 <p class="profile-info-item-detail">*** <b runat="server" class="wrap" id="description"></b></p>
                 <div runat="server" id="rateDiv">
                     <div class="rate">
-                        <asp:TextBox runat="server" CssClass="form-control" ViewStateMode="Disabled" ID="score" type="number" max="5" min="1" />
+                        <asp:TextBox runat="server"
+                             CssClass="form-control" 
+                            ViewStateMode="Disabled" 
+                            ValidationGroup="rate" 
+                            ID="score" 
+                            type="number" max="5" min="1" />
                         <asp:Button
                             ID="rateBtn"
-                            UseSubmitBehavior="false"
-                            OnClick="rateBtn_Click" runat="server" CssClass="btn btn-primary" Text="Rate" />
+                            OnClick="rateBtn_Click" runat="server" 
+                            CssClass="btn btn-primary" Text="Rate" />
                     </div>
                     <p class="small-description">* Rate user score from 1 to 5</p>
                 </div>
