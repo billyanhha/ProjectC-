@@ -105,7 +105,7 @@ input {
     background-color: #fff;
 }
 
-.cart-number{
+.cart-number {
     margin-left: 10px;
     text-align: center;
     height: 20px;
@@ -113,6 +113,31 @@ input {
     border-radius: 2px;
     background-color: #fdd835;
     color: #000;
+}
+
+.watchedIcon {
+    position: relative;
+}
+
+.watched-number {
+    font-weight: normal !important;
+    position: absolute;
+    right: -6px;
+    top: -8px;
+    padding: 1px 3px;
+    color: #fff;
+    background-clip: padding-box;
+    display: inline-block;
+    font-family: 'helvetica neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 1.3;
+    min-height: 13px;
+    background-color: #fa3e3e;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

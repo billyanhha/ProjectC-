@@ -17,7 +17,8 @@ namespace Project
         {
             getUser();
             cartnNumber.InnerHtml = getNumberOfCart() + "";
-            if(!string.IsNullOrEmpty(searchTxt) && !IsPostBack)
+            watchedNumber.InnerHtml = getNumberOfCart() + "";
+            if (!string.IsNullOrEmpty(searchTxt) && !IsPostBack)
             {
                 searchField.Text = searchTxt;
             }
